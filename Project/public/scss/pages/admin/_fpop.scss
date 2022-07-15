@@ -1,0 +1,490 @@
+#fp-Bnavbar {
+    position: absolute;
+    width: 600px;
+    height: 50px;
+    background: #8C8C8C;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+}
+
+
+
+#text_login {
+
+    max-width: 400px;
+    margin: 0 auto;
+    top: 200px;
+    padding: 30px;
+
+}
+
+.footer p {
+    font-size: 10px;
+}
+
+// label {
+//     font-weight: 600;
+//     margin: 0.5rem 0 0;
+// }
+
+
+#btnB {
+    height: 40px;
+    width: 150px;
+    border-radius: 5px;
+    font-size: 13px;
+    text-align: center;
+    background-color: rgb(137, 137, 137);
+}
+
+#gender {
+    border-radius: 5px;
+    width: 200px;
+    right: 5%;
+    font-size: 15px;
+    height: 35px;
+    margin: 5px;
+    float: right;
+}
+
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: .875rem;
+    color: red
+}
+
+select {
+    height: 35px;
+    border-radius: 6px;
+}
+
+select[id^="birth"] {
+    width: 70px;
+    /* color: aquamarine; */
+    float: right;
+    margin: 0 5px;
+}
+
+.redwarn {
+    font-size: small;
+    border: 1.5px solid #ff0000;
+
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 70px auto 10px auto;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+button:hover {
+    opacity: 0.8;
+
+}
+
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 20px 0 30px 0;
+    position: relative;
+}
+
+.fp_container {
+    padding: 0 100px;
+}
+
+#loginbtn {
+    height: 40px;
+    width: 100%;
+    color: #fefefe;
+    background-color: rgb(66, 66, 66);
+    border: 0px;
+    border-radius: 6px;
+    font-size: 10px;
+    margin-top: 30px;
+    padding: 0 10px;
+
+}
+
+#registerbtn {
+    height: 40px;
+    width: 100%;
+    color: rgb(66, 66, 66);
+    /* background-color: rgb(66, 66, 66); */
+    border: 1px solid #acacac;
+    border-radius: 6px;
+    font-size: 10px;
+    margin: 5px 0 30px 0;
+    padding: 0 10px;
+}
+
+// input:valid+span:after {
+//     position: absolute;
+//     content: '✓';
+//     padding-left: 5px;
+//     color: #009000;
+// }
+
+.fpop-sidebar {
+    height: 100%;
+    width: 250px;
+    background-color: rgb(225, 184, 0);
+    position: fixed !important;
+    z-index: 1;
+    overflow: auto
+}
+
+.sidebar-heading {
+    font-weight: 600;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.fp-item {
+    width: 200px;
+    display: block;
+    padding: 8px 20px;
+    text-align: left;
+    margin: 0 auto;
+    outline: 0
+}
+
+
+.fpop-inner {
+    white-space: nowrap;
+    padding: 10px 20px;
+    font-weight: 800;
+    width: 160px;
+    margin: 0 auto;
+}
+
+.fpop-header {
+    font-size: 10px;
+    font-weight: 700;
+    margin: 5px 0;
+    color: rgb(152, 152, 152);
+}
+
+.fpop-item {
+    color: rgb(79, 79, 79) !important;
+    font-size: 10px;
+    font-weight: 600;
+    font-size: 13px;
+    display: block;
+    padding: 5px 0;
+}
+
+
+.fp-item>li {
+    list-style: none;
+    color: white;
+}
+
+.fp-item>li>span {
+    font-weight: 500;
+    font-size: 14px;
+
+}
+
+body {
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.fpop-hr {
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 0.5px;
+    border: none;
+
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #9c9c9c;
+    border-radius: 100px;
+}
+
+
+.fpop-navbar {
+    box-shadow: 0 0.2rem 2rem rgba(0, 0, 0, 0.1);
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    height: 90px;
+    margin-left: 250px;
+}
+
+.fpop-item:hover {
+    background-color: #dddfeb;
+    border-radius: 2px;
+
+}
+
+.scroll-to-top {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    display: none;
+    text-align: center;
+    color: #fff;
+    background: rgba(90, 92, 105, .5);
+    line-height: 46px
+}
+
+.fpop-text {
+    color: #fcbd02 !important;
+}
+
+.fpop-main {
+    margin-left: 250px;
+}
+
+.fp-item>li>span {
+    padding: 10px;
+}
+
+.footerMell>div>div>a {
+    color: white;
+    font-size: small;
+
+}
+
+label,
+textarea {
+    font-size: .9rem;
+    letter-spacing: 1px;
+}
+
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+// label {
+//     display: block;
+//     margin-bottom: 10px;
+// }
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+
+
+.dataTable-wrapper.no-footer .dataTable-container {
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.dataTable-top,
+.dataTable-bottom {
+    padding: 8px 10px;
+}
+
+.dataTable-top>nav:first-child,
+.dataTable-top>div:first-child,
+.dataTable-bottom>nav:first-child,
+.dataTable-bottom>div:first-child {
+    float: left;
+}
+
+.dataTable-top>nav:last-child,
+.dataTable-top>div:last-child,
+.dataTable-bottom>nav:last-child,
+.dataTable-bottom>div:last-child {
+    float: right;
+}
+
+.dataTable-selector {
+    padding: 6px;
+}
+
+.dataTable-input {
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid;
+}
+
+.dataTable-info {
+    margin: 7px 0;
+}
+
+/* PAGER */
+.dataTable-pagination ul {
+    margin: 0;
+    padding-left: 0;
+}
+
+.dataTable-pagination li {
+    list-style: none;
+    float: left;
+}
+
+.dataTable-pagination a {
+    border: 1px solid transparent;
+    float: left;
+    margin-left: 2px;
+    padding: 6px 12px;
+    position: relative;
+    text-decoration: none;
+    color: #333;
+}
+
+.dataTable-pagination a:hover {
+    background-color: #ffee6b;
+    border-radius: 5px;
+}
+
+.dataTable-pagination .active a,
+.dataTable-pagination .active a:focus,
+.dataTable-pagination .active a:hover {
+    background-color: #efefef;
+    border-radius: 5px;
+    cursor: default;
+}
+
+.dataTable-pagination .pager a {
+    font-weight: bold;
+}
+
+/* TABLE */
+.dataTable-table {
+    max-width: 100%;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+}
+
+.dataTable-table>tbody>tr>td,
+.dataTable-table>tbody>tr>th,
+.dataTable-table>tfoot>tr>td,
+.dataTable-table>tfoot>tr>th,
+.dataTable-table>thead>tr>td,
+.dataTable-table>thead>tr>th {
+    vertical-align: top;
+    padding: 15px 10px;
+}
+
+.dataTable-table>thead>tr>th {
+    vertical-align: bottom;
+    text-align: left;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.dataTable-table>tfoot>tr>th {
+    vertical-align: bottom;
+    text-align: left;
+    border-top: 1px solid #d9d9d9;
+}
+
+.dataTable-table th {
+    vertical-align: bottom;
+    text-align: left;
+}
+
+.dataTable-table th a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.dataTable-sorter {
+    display: inline-block;
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.dataTable-sorter::before,
+.dataTable-sorter::after {
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    right: 4px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    opacity: 0.2;
+}
+
+.dataTable-sorter::before {
+    border-top: 4px solid #000;
+    bottom: 0px;
+}
+
+.dataTable-sorter::after {
+    border-bottom: 4px solid #000;
+    border-top: 4px solid transparent;
+    top: 0px;
+}
+
+.asc .dataTable-sorter::after,
+.desc .dataTable-sorter::before {
+    opacity: 0.6;
+}
+
+.dataTables-empty {
+    text-align: center;
+}
+
+.dataTable-top::after,
+.dataTable-bottom::after {
+    clear: both;
+    content: " ";
+    display: table;
+}

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>function.pop</title>
+  <link rel="stylesheet" href="/css/all.css" />
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="/fonts/fontawesome-all.min.css" />
+  <!-- <link rel="stylesheet" href="./assets/css/TonyCss.css"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    .owl-theme .owl-dots .owl-dot span {
+      display: none;
+    }
+
+    .owl-carousel .img {
+      max-width: 374px;
+      width: 100%;
+      background-color: #ccc;
+      max-height: 561px;
+      height: 100%;
+    }
+
+    /* My hr tag */
+    .my_hr {
+      width: 130px;
+      background-color: orange;
+      height: 3px;
+    }
+
+    .my_product {
+      cursor: pointer;
+      margin-bottom: 2rem;
+    }
+
+    .my_product img {
+      transition: 0.3s all;
+    }
+
+    .my_product:hover img {
+      opacity: 0.7;
+    }
+
+    /* 24. Featured Design */
+    .my_product .buy-btn {
+      color: #ffffff;
+      transform: translateY(50px);
+      opacity: 0;
+      transition: 0.3s all;
+      background-color: #000000;
+      border-radius: 5px;
+    }
+
+    .my_product:hover .buy-btn {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+
+    .my_button {
+      font-size: 0.8rem;
+      font-weight: 900;
+      outline: none;
+      border: none;
+      background-color: #1d1d1d;
+      color: aliceblue;
+      padding: 13px 30px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.5s ease;
+    }
+
+    .my_button:hover {
+      background-color: rgb(255, 223, 80);
+      border-radius: 5px;
+    }
+
+    /*  */
+    /* Product Detail Page */
+    /*  */
+    #mainImg {
+      border: 2px solid gray;
+    }
+
+    .small-img-group {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .small-img-col {
+      flex-basis: 23%;
+      cursor: pointer;
+      margin-top: 12px;
+      opacity: 0.6;
+    }
+
+    .small-img-col:hover {
+      opacity: 0.9;
+    }
+
+    /* 39. Single Product Design */
+    .single-product input {
+      width: 50px;
+      height: 40px;
+      padding-left: 10px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    .single-product input:focus {
+      outline: none;
+    }
+
+    .single-product .buy-btn {
+      background-color: #fb774b;
+      opacity: 1;
+      transition: 0.4s all;
+    }
+
+    .single-product .buy-btn:hover {
+      background-color: #222222;
+    }
+
+
+
+
+
+    /* Ryan新增 */
+
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+      }
+
+      50% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOutUp {
+      0% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+
+      50% {
+        transform: translate3d(0, -100%, 0);
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* .pcount {
+      } */
+    .pcount a {
+      border: 1px solid #000;
+      padding: 3px;
+    }
+
+    .number {
+      width: 50px;
+      text-align: center;
+    }
+
+    .pid {
+      text-align: center;
+    }
+
+    .pcolor a:hover {
+      border: 1px solid #f00;
+    }
+
+    .pcolor-active {
+      border: 1px solid #f00;
+    }
+
+    .psize button {
+      width: 30px;
+    }
+
+    .psize-active {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .fadeInDown {
+      animation-name: fadeInDown;
+      animation-duration: 0.5s;
+      animation-timing-function: ease-in-out;
+    }
+
+    .fadeOutUp {
+      animation-name: fadeOutUp;
+      animation-duration: 0.5s;
+      animation-timing-function: ease-in-out;
+    }
+
+    .al {
+      border-radius: 7px;
+    background-color: #fff;
+    z-index: 9999;
+    border: 1px solid #51AF30;
+    width: 170px;
+    text-align: center;
+    padding: 20px 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+    font-size: 0.9em;
+    }
+
+    .star5 {
+      box-sizing: border-box;
+      width: var(--size, 24px);
+      height: var(--size, 24px);
+    }
+
+    .rating {
+      width: 120px;
+      height: 24px;
+      position: relative;
+      background-color: gray;
+    }
+
+    .rating progress.rating-bg {
+      -webkit-appearance: none;
+      -moz-appearence: none;
+      appearance: none;
+      border: none;
+      display: inline-block;
+      height: 24px;
+      width: 100%;
+      color: orange;
+    }
+
+    .rating progress.rating-bg::-webkit-progress-value {
+      background-color: rgb(239, 218, 28);
+    }
+
+    .rating progress.rating-bg::-moz-progress-bar {
+      background-color: orange;
+    }
+
+    .rating svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .colorPicker:hover{
+      transform: scale(0.9);
+      cursor: pointer;
+    }
+    .sizePicker{
+      background-color: #000;
+      color: #fff;
+    }
+
+    /* 聯名圖片 */
+    
+  </style>
+</head>
+
+<body>
+  <!-- 0. Wraper -->
+  <div class="wrapper">
+    <!-- 1. NAvbar -->
+    <%- include("navbar.ejs") %>
+
+      <!-- 2. Breadcrumb -->
+
+      <section>
+        <div class="container mt-2 pt-2">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="/home"><i class="fas fa-home" style="color: black;"></i><span
+                    style="color: black;">首頁</span></a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="/home/product/<%= result[0].product_gender %>"><span style="color: black;">
+                    <%= result[0].product_gender %>
+                  </span></a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="/home/product/<%= result[0].product_gender %>/<%= result[0].product_category %>"><span
+                    style="color: black;">
+                    <%= result[0].product_category %>
+                  </span></a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="/home/product/<%= result[0].product_gender %>/single_product/<%= result[0].product_id %>"><span
+                    style="color: black;">
+                    <%= result[0].product_name %>
+                  </span></a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <!-- 3. Single Product -->
+      <section class="container single-product mt-2 pt-2">
+        <div class="row mt-2">
+          <!-- 3.1 Left Side Photo -->
+
+          <div class="col-2"></div>
+          <div class="col-lg-5 col-md-12 col-sm-12 py-2 px-4">
+            <img id="mainImg" class="img-fluid w-100 py-2 px-2 zoomImg"
+              src="/img/product/<%= result[0].product_image %>" alt="" />
+
+            <div class="small-img-group">
+              <div class="small-img-col">
+                <img class="small-img" src="/img/product/<%= result[0].product_image %>" alt="" width="100%" />
+              </div>
+              <div class="small-img-col">
+                <img class="small-img" src="/img/product/<%= result[0].product_image2 %>" alt="" width="100%" />
+              </div>
+              <div class="small-img-col">
+                <img class="small-img" src="/img/product/<%= result[0].product_image3 %>" alt="" width="100%" />
+              </div>
+              <div class="small-img-col">
+                <img class="small-img" src="/img/product/<%= result[0].product_image4 %>" alt="" width="100%" />
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-md-12 col-sm-12 py-3 px-5" id="product_describe">
+            <h4>
+              <%= result[0].product_gender %> | <%= result[0].product_category %>
+            </h4>
+            <hr style="background-color: #545454; height: 2px" />
+            <h6 style="color: gray">時尚</h6>
+            <br />
+            <h5 style="font-weight: 700;">
+              <%= result[0].product_name %>
+            </h5>
+            <p>商品編號  <%= result[0].product_code %>
+            </p>
+            <p>價　格： $ <span>
+                <%= result[0].product_price %>
+              </span> 元</p>
+            <p>顏　色： <span id="cho_color">白</span><span>色</span></p>
+            <span style="color: red">顏色選單</span>
+            <span class="colorflexBox mx-auto px-2">
+              <label class="mr-1">
+                <input type="radio" value="WH" name="color_ch" style="width: 20px; height: 20px; display: none;" data-col="白"
+                  checked /> <span class="colorPicker"  style="display: inline-block; width: 20px; height: 20px; background-color: #fff; border-radius: 50%; border: 1px solid #000;"></span>
+              </label>
+              <label>
+                <input type="radio" value="BK" name="color_ch" data-col="黑" style="width: 20px; height: 20px; display: none;" /><span class="colorPicker" style="display: inline-block; width: 20px; height: 20px; background-color: #000; border-radius: 50%;"></span>
+              </label>
+
+            </span>
+            <br />
+            <br />
+            <h6>尺　寸：<span id="cho_size"></span></h6>
+            <span style="color: red">尺寸選單</span><img src="" alt="" />
+            <br>  
+            <span class="sizeflexBox mx-auto col-6 ml-0 pl-0">
+              <% result.forEach(function(item){ %>
+                <% let ch="" %>
+                  <% if(ch !=item.size_name){ %>
+                    <label>
+                      <input type="radio" value="<%- item.size_name %>" name="size_ch" style="display: none;" 
+                        data-allId="<%- item.product_all_id %>" />
+                      <span class=" mx-auto px-4 pt-0" style="border: 1px solid #000; cursor: pointer; padding: 5px 13px; border-radius: 5px;">
+                        <%- item.size_name %>
+                      </span>
+                    </label>
+
+                    <% ch=item.size_name %>
+                      <% } %>
+                        <% }) %>
+
+            </span>
+            <br />
+            <br />
+            <div class="d-flex flex-row"></div>
+            <span>數　量：</span>
+            <span>
+              <div class="col-2 css_tb pCount d-flex align-self-center ml-0 pl-0">
+                <a href="javascript:" class="q_sub my-2 py-1 mx-auto"
+                  style="border: 1px solid #000; border-radius: 2px;"><i class="fa fa-minus px-2" aria-hidden="true"
+                    style="width: 30px; "></i></a>
+                <input type="text" id="number" value="1" style="width: 75px; text-align: center"
+                  class="mx-auto my-2 py-2" />
+                <a href="javascript:" class="q_add my-2 py-1 mx-auto"
+                  style="border: 1px solid #000; border-radius: 2px;"><i class="fa fa-plus px-2" aria-hidden="true"
+                    style="width: 30px;"></i></a>
+              </div>
+            </span>
+
+            <form id="p_single">
+              <input type="hidden" name="code" value="<%= result[0].product_code %>" />
+              <input type="hidden" name="all_id" value="<%= result[0].product_all_id %>" />
+              <input type="hidden" name="id" value="<%= result[0].product_id %>" />
+              <input type="hidden" name="name" value="<%= result[0].product_name %>" />
+              <input type="hidden" name="image" value="<%= result[0].product_image %>" />
+              <input type="hidden" name="size" value="" />
+              <input type="hidden" name="color" value="" />
+              <input type="hidden" name="price" value="<%= result[0].product_price %>" />
+              <input type="hidden" name="quantity" value="" />
+              <input id="addCart" value="加入購物車" class="btn btn-dark w-50" style="width: 100px;" />
+            </form>
+
+
+            <br />
+            <br />
+
+            <div>
+              <h5 style="
+                  border-bottom: 1px solid #000;
+                  padding-bottom: 10px;
+                  margin-bottom: 10px;
+                ">
+                商品描述
+              </h5>
+            </div>
+            <div>
+              <p>&emsp;&emsp;<%= result[0].product_description %>
+              </p>
+            </div>
+
+            <br />
+
+            <div>
+              <h5 style="border-bottom: 1px solid #000; padding-bottom: 10px">
+                商品資訊
+              </h5>
+            </div>
+            <ul>
+              <li>
+                <%- result[0].product_composition %>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-1"></div>
+
+        </div>
+      </section>
+
+      <!-- 4. Img -->
+      <div class="container mt-3 pt-3">
+        <div class="row">
+          <div class="col-12">
+            <div id="" class="my-0 py-0 w-100 mx-auto mt-5">
+              <img src="/img/product/photo2.jpg" alt="" style="max-width:100%">
+            </div>
+          </div>
+      </div>
+    </div>
+
+      <!-- 4. Relative Product -->
+      <section class="container" id="related-products" class="pt-5 mt-2">
+        <div class="text-center mt-4 pt-2">
+          <h5><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-hand-thumbs-up mr-2" viewBox="0 0 16 16">
+            <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"/>
+          </svg>推薦商品</h5>
+          <hr class="mx-auto m-5" />
+        </div>
+        <div class="row mx-auto container-fluid">
+          <!-- Featured List -->
+          <% pro2.forEach(function(item){ %>
+          <div class="my_product text-center col-lg-3 col-md-4 col-sm-6 col-6">
+            <img class="img-fluid mb-3" src="/img/product/<%- item.product_image %>" alt="" />
+            <h6 class="p-name" style="font-size: 1em;"><%- item.product_name %></h5>
+            <h6 class="p-price">$ <%- item.product_price %></h4>
+            <button class="my_button buy-btn" onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';">Buy Now</button>
+          </div>
+          <% }); %>
+        </div>
+      </section>
+
+
+      <!-- 6. Recommend -->
+
+      <div class="container">
+        <div class="text-center mt-4 pt-2">
+          <h5><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gem m-2" viewBox="0 0 16 16">
+            <path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495 8 13.366l2.532-7.876-5.062.005zm-1.371-.999-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817 5.123-6.83-2.928.002-2.195 6.828z"/>
+          </svg>實惠商品</h5>
+          <hr class="mx-auto" />
+        </div>
+        <div class="row">
+          <!-- <div style="font-weight: 900" class="col text-center mb-3 mt-2">
+            <h2>好評商品</h2>
+          </div> -->
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="owl-carousel owl-theme">
+              <% pro.forEach(function(item){ %>
+                <div class="item">
+                  <h4>
+                    <div>
+                      <a href="/home/product/<%- item.product_gender %>/single_product/<%- item.product_id %>">
+                        <div class="img" style="margin:auto; height: 550px; background-color: white;">
+                          <p class="mx-auto d-flex justify-content-center" style="font-size: 0.6em;">
+                            <%- item.product_name %>
+                          </p>
+                          <img style=" width: 100%; height: 70%; border-radius: 2px"
+                            src="/img/product/<%- item.product_image %>" class="mx-auto d-flex justify-content-center"
+                            alt="" />
+                          <p class="mx-auto d-flex justify-content-center mt-3" style="font-size: 0.6em;"><%- item.product_price %> 元 </p>
+                          <!-- <div>
+                            <svg style="display:none;" class="star5" width="20" height="20">
+                              <defs class="star5 mx-auto d-flex justify-content-center">
+                                <symbol id="fivestars" class="star5 mx-auto d-flex justify-content-center">
+                                  <path class="star5"
+                                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                    fill="white" fill-rule="evenodd" />
+                                  <path class="star5"
+                                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                    fill="white" fill-rule="evenodd" transform="translate(24)" />
+                                  <path class="star5"
+                                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                    fill="white" fill-rule="evenodd" transform="translate(48)" />
+                                  <path class="star5"
+                                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                    fill="white" fill-rule="evenodd" transform="translate(72)" />
+                                  <path class="star5"
+                                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                    fill="white" fill-rule="evenodd" transform="translate(96)" />
+                                </symbol>
+                              </defs>
+                            </svg>
+
+                            <div class="rating mx-auto" title="<%- item.product_rating %>/5">
+                              <progress class="rating-bg" value="<%= item.product_rating %>" max="5"></progress>
+                              <svg width="20" height="20">
+                                <use xlink:href="#fivestars" />
+                              </svg>
+                            </div>
+                            <p class="mx-auto d-flex justify-content-center mt-2" style="font-size: 0.8em;">分數: <%=
+                                item.product_rating %> / 5</p>
+                          </div> -->
+                        </div>
+                      </a>
+                    </div>
+                  </h4>
+                </div>
+                <% }); %>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+
+  <br /><br /><br /><br /><br />
+  <br /><br /><br /><br /><br />
+  <br /><br /><br /><br /><br />
+
+  <!-- 5. Footer -->
+  <footer class="footer">
+    <%- include("footer.ejs") %>
+  </footer>
+
+  <!-- Bootstrap setting -->
+  <!-- <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script> -->
+  <!-- <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script> -->
+  <script src="/js/member/bootstrap-4.6.1-dist/js/jquery.min.js"></script>
+  <!-- <script src="/bootstrap-4.6.1-dist/js/popper.min.js"></script> -->
+  <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.js" ></script> -->
+  <script src="/js/member/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+  <!-- <script src="../js/product/jquery.min.js"></script> -->
+  <!-- <script src="../public/js/product/myJs.js"></script> -->
+  <script src="/js/shop_cart/jquery.js"></script>
+  <script src="/js/member/"></script>
+  <!-- <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/myJs.js"></script> -->
+  <script>
+
+
+    var mainImg = document.getElementById("mainImg");
+    var smallImg = document.getElementsByClassName("small-img");
+    console.log(mainImg.src);
+
+    for (let i = 0; i < 4; i++) {
+      smallImg[i].onclick = function () {
+        mainImg.src = smallImg[i].src;
+        $(".zoomImg").blowup({
+          "width": 400,
+          "height": 400,
+          "round": false,
+          "zIndex": 99999,
+          "scale": 1
+        });
+
+      };
+    }
+
+    $(document).ready(function () {
+
+      $(".sizeflexBox span").click(function(x){
+        $(".sizeflexBox span").removeClass("sizePicker");
+        $(this).addClass("sizePicker");
+      });
+
+  
+
+
+      $(".colorflexBox ").find("input[checked]").addClass("pcolor-active");
+
+      $(".colorflexBox input").on("click", function () {
+        $("#cho_color").html(this.dataset.col);
+        $("#p_single input[name='color']").val(this.value);
+        $(".colorflexBox input").removeClass("pcolor-active");
+        $(this).addClass("pcolor-active");
+      });
+      $(".sizeflexBox ").find("input[checked]").addClass("psize-active");
+
+      $(".sizeflexBox input").on("click", function () {
+        $("#cho_size").html(this.value);
+        $("#p_single input[name='size']").val(this.value);
+        $("#p_single input[name='all_id']").val($(this).attr("data-allId"));
+        $(".sizeflexBox input").removeClass("psize-active");
+        $(this).addClass("psize-active");
+      });
+      $(".q_sub,.q_add").on("click", function () {
+        let quantity = $("#number").val();
+        $("#p_single input[name='quantity']").val(quantity);
+      });
+
+      //商品增加
+      $(".q_add").click(function () {
+        var num = 0;
+        num++;
+
+        var Count = parseInt($(this).siblings("#number").val());
+        var to_Count = parseInt(Count + num);
+        $(this).siblings("#number").val(to_Count);
+        let quantity = $("#number").val();
+        $("#p_single input[name='quantity']").val($("#number").val());
+
+        // $(this).siblings("#number").val();
+      });
+
+      //商品減少
+      $(".q_sub").click(function () {
+        var Count = parseInt($(this).siblings("#number").val());
+        Count--;
+
+        if (Count < 1) {
+          Count = 1;
+        } else {
+          $(this).siblings("#number").val(Count);
+          $("#p_single input[name='quantity']").val($("#number").val());
+        }
+      });
+
+      function serializeToJSON(data) {
+        values = {};
+        for (idx in data) {
+          values[data[idx].name] = data[idx].value;
+        }
+        return JSON.stringify(values);
+      }
+
+      $("#addCart").on("click", function () {
+        var pSize = $(".sizeflexBox ").find(" .psize-active").val();
+        var pColor = $(".colorflexBox ").find(".pcolor-active").val();
+        var pColor_ch = false;
+        var pSize_ch = false;
+        var nowCartCount = $('#cartCount').text();
+
+        $(".sizeflexBox ")
+          .find("input")
+          .each(function (idx, ele) {
+            if ($(ele).prop('checked')) {
+              pSize_ch = true;
+              $('#p_single input[name="size"]').val($(ele).val())
+
+            }
+          });
+        $(".colorflexBox ")
+          .find("input")
+          .each(function (idx, ele) {
+            if ($(ele).prop('checked')) {
+              pColor_ch = true;
+              $('#p_single input[name="color"]').val($(ele).val())
+            }
+          });
+        $('#p_single input[name="quantity"]').val($("#number").val());
+
+
+        // console.log(pColor_ch);
+        // console.log(pSize_ch);
+
+        // // console.log(pSize_ch);
+        // //判斷尺寸和顏色是否選擇
+        if (pColor_ch && pSize_ch) {
+
+          if (nowCartCount) {
+            let update = parseInt(nowCartCount) + parseInt($('#number').val());
+            $('#cartCount').html(update.toString());
+          } else {
+            let update = 0;
+            update += parseInt($('#number').val());
+            $('#cartCount').html(update.toString());
+          }
+          var data = $("#p_single").serializeArray();
+          // console.log(data);
+          JSONData = serializeToJSON(data);
+          console.log(JSONData);
+
+          var addTo_cart = document.createElement("div");
+          addTo_cart.innerHTML =  `  
+          <span><img style="width:20px" src="/img/shop_cart/check2.png" alt=""></span>
+          已加入購物車`;
+          $(addTo_cart).attr("class", "al fadeInDown");
+          document.querySelector(".sticky-top").appendChild(addTo_cart);
+
+          setTimeout(function () {
+            $(addTo_cart).attr("class", "al fadeOutUp");
+          }, 2000);
+          setTimeout(function () {
+            $(addTo_cart).remove();
+          }, 2200);
+
+
+
+          $.ajax({
+            url: "/home/shop_cart/",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSONData,
+            success: function (res) {
+              console.log("已購買")
+              var dot = document.createElement("div");
+              $(dot).prop("class","dotGreen");
+              $(dot).css({
+                "background": "#96ff6c",
+                "width": "8px",
+                "height": "8px",
+                "border-radius": "50%",
+                "color": "#fff",
+                "position": "absolute",
+                "left": "88%",
+                "top": "-3px",
+                "transition":".3s",
+              })
+              document.getElementById("fpopnav_cart").appendChild(dot);
+              var imgUrl = $("#mainImg").prop("src").substr(34);
+              var pSize = $(".sizeflexBox ").find(" .psize-active").val();
+              var nowCartCount = $('#cartCount').text();
+              var pName = $("#product_describe > h6").text();
+
+              var pidItem =document.createElement("div");
+              $(pidItem).prop("class","d-flex mb-2 smItem");
+              $(pidItem).css("padding","0 30px");
+              
+              pidItem.innerHTML =` 
+                      <div style="
+                          margin-right: 20px;
+                          max-width: 37px;
+                          height: 100%;
+                          width: 100%;
+                          
+                  ">
+                        <img style="width:100%; height:100%" src="/img/product/${imgUrl}" alt="">
+                      </div>
+                      <div style="font-size: 0.5em; text-align: left; user-select: none;">
+                        <p class="m-0">
+                         ${pName}
+                        </p>
+                        <p class="m-0" style="color: #818181;">尺寸:${pSize}
+                        </p>
+                        <p class="m-0" style="color: #818181;">數量:${nowCartCount}
+                        </p>
+                      </div>
+
+              `;
+              $("#shopCartItttttem").append(pidItem);
+
+              var res = JSON.parse(res);
+
+            },
+            error: function () {
+              alert("系統錯誤");
+            },
+          });
+
+
+        } else {
+          if ($(".al").length == 0) {
+            var al = document.createElement("div");
+            console.log(al);
+            al.innerHTML = "請選擇尺寸";
+            $(al).attr("class", "al fadeInDown");
+            document.querySelector(".sticky-top").appendChild(al);
+          }
+
+          setTimeout(function () {
+            $(al).attr("class", "al fadeOutUp");
+          }, 2000);
+          setTimeout(function () {
+            $(al).remove();
+          }, 2200);
+        }
+      });
+    });
+  </script>
+ 
+  <!-- <script>
+      $(document).ready(function () {
+        $(".zoomImg").blowup({
+          "background" : #F39C12,
+          "width": 450,
+          "height": 450
+        });
+        })
+    </script> -->
+
+  <!--  -->
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+  <script type="text/javascript" src="/js/product/blowup.js"></script>
+  <!-- blowup zoom-img -->
+  <script>
+    $(function () {
+      $(".zoomImg").blowup({
+        "width": 300,
+        "height": 300,
+        "round": false,
+        "zIndex": 99999,
+        "scale": 0.6
+      });
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-sidebar/3.3.1/sticky-sidebar.min.js"></script>
+  <script src="/js/shop_cart/owl.carousel.js"></script>
+  <script src="/js/product/owl.js"></script>
+
+
+
+</body>
+
+</html>

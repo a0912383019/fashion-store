@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
+  <title><%- title %></title>
+  <link rel="stylesheet" type="text/css" href="/css/all.css" />
+  <script src="https://kit.fontawesome.com/93e1c8f0af.js" crossorigin="anonymous"></script>
+  <script src="/js/shop_cart/jquery.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <%- include("navbar.ejs") %>
+    <% if(memberprofile){ %>
+ <!-- outline_class  oib oig oi  oir-->
+      <div class="container">
+
+        <div class="cart_content">
+          <div class="row content_text">
+            <div class="col-12 col-lg-9" style="padding: 0">
+              <div class="row cart_banner">
+                <div class="col-12 top_link d-none d-lg-block">
+                  <ul class="cart-link">
+                    <li><a href="/home">首頁</a></li>
+                    <li>
+                     <b>購物車</b>  
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 mid mb-3">
+                  <h6 style="font-size: 1.2em; font-weight: 500">購物車</h6>
+                </div>
+                <div class="col-12 cart-step">
+                  <ul class="fz-dark" style="font-size: 1.4em;
+                  font-weight: 500;">
+                    <li>
+                      <span>1</span>
+                      查看購物車
+                    </li>
+                    <li >
+                      <span>2</span>
+                      訂單確認
+                    </li>
+                    <li style="color: #000;">
+                      <span style="background-color: #000; ">3</span>
+                      訂單完成
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-3 d-none d-lg-block"></div>
+          </div>
+          <div class="row content_text">
+            <div class="col-12 col-lg-9">
+              <div class="row">
+                <div class="col-12 text-center mb-3">
+                  <div><img src="/img/shop_cart/Finish.png" alt=""></div>
+                </div>
+                <div class="col-12 text-center mb-2">
+                  <p>已經收到您的訂單</p>
+                </div>
+                <div class="col-12 text-center mb-3">
+                  <h6>訂單編號 : <span id="newOrder"></span></h6>
+                </div>
+                <div class="col-12 text-center mb-3">
+                  <p style="color: red; font-size: 0.6em;">請拍照或儲存以便日後查詢</p>
+                </div>
+                
+              </div>
+
+
+            </div>
+            <div class="col-12 col-lg-3 p-lg-0" >
+              <hr class="d-lg-none" style="border-top: 0.9px solid #000">
+              <div class="div cart_Order">
+                <div class="d-none d-lg-block" style="text-align: center">
+                  <p style="font-size: 1.6em;
+                  font-weight: 700;">訂單確認</p>
+                </div>
+                <div class="py-2 borderOut">
+                  <p class="d-none d-lg-block">
+                    <b>總計商品件數:</b>
+                    <span class="float-right"><span id="total_count">
+                      <% let count = 0;
+                        result.forEach(function(item){
+                          count +=  parseInt(item.Quantity);
+                        })
+                      
+                      %>
+                        <%- count.toString() %>
+                        <% console.log(count) %>
+                      </span> 件</span>
+                  </p>
+                  <p>
+                    <b>小計:</b><span class="float-right">NT$<span id="total_price">
+                      <% let total_Price = 0;
+                        result.forEach(function(item){
+                          let ad = parseInt(item.Quantity) * parseInt(item.price)
+                          total_Price += ad ;
+                        })
+                      
+                      %>
+                        <%- total.toString() %>
+                      </span></span>
+                  </p>
+                  <p>
+                    <b>運費:</b><span class="float-right">NT$<span id="fare" class="fare">0</span></span>
+                  </p>
+                </div>
+                <div class="py-3 d-none d-lg-block" class="canFare" id="canFare">
+                  只差NT$ <span>0</span>，即可享有 <span style="color: #f00;">免費</span> 標準運送。
+                </div>
+                <div class="pt-2 mb-4">
+                  <p style="font-size: 1.6em;">
+                    <b>總額:</b><span class="float-right" style="font-weight: 700;">NT$<span id="tototoPrice">0</span></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+  <input id="checkUser" type="hidden" value="true">
+
+  <%}else{%>
+    <input id="checkUser" type="hidden" value="">
+
+
+        <%}%>
+  <div class="push"></div>
+     
+  </div>
+    <%- include("footer.ejs") %>
+   
+  <script>
+    $(document).ready(function () {
+ if (!$("#checkUser").val()) {
+              alert("請先登入會員");
+              window.location.assign("http://localhost:3000/home/member/login");
+ }else{
+  //更新運費
+      var fare = 1000;
+      var total_price = parseInt($("#total_price").text());
+
+      if (total_price >= fare) {
+        $("#fare").html("0");
+        $("#canFare").html("<p>免費標準運送。</p>");
+      } else {
+        var diff = 0;
+        diff = fare - total_price;
+        $("#fare").html("60");
+
+        $("#canFare ").html(`只差NT$ <span>${diff.toString()}</span>，即可享有免費標準運送。`);
+      }
+
+      //更新總額
+      var P_fare = parseInt($("#fare").html());
+      var tototoPrice = 0;
+      tototoPrice = P_fare + total_price;
+      $("#tototoPrice").html(tototoPrice.toString());
+
+
+      function findIndexOf (arr,name){
+        let idx = 0;
+        for(let i =0;i<arr.length;i++){
+          if(arr[i].indexOf(name)!= -1){
+              idx = i;
+               return arr[idx].split("=")[1];
+          }
+        }
+        return;
+      };
+
+
+      var url = location.href;
+      if (url.indexOf("?") != -1) {
+        var arr1 = url.split("?");
+        var arr2 = arr1[1].split("&");
+        var arr3 = arr2[1].split("=");
+
+
+        let o_name = decodeURI(findIndexOf(arr2,"name")) ;
+        let o_city = findIndexOf(arr2,"city");
+        let o_address = decodeURI(findIndexOf(arr2,"address"));
+        let o_phone = findIndexOf(arr2,"phone");
+        let o_email = findIndexOf(arr2,"email").replace("%40", "@");
+        let o_List =findIndexOf(arr2,"newOrderList");
+
+
+        $("#newOrder").html(o_List);
+        $("#name").html(o_name);
+        $("#city").html(o_city);
+        $("#address").html(o_address);
+        $("#phone").html(o_phone);
+        $("#email").html(o_email);
+
+
+
+
+      };
+ }
+
+    
+
+
+
+
+
+  
+    });
+  </script>
+
+  <script src="/js/shop_cart/owl.carousel.js"></script>
+  <script src="/js/shop_cart/owl.js"></script>
+  <script src="/js/shop_cart/bootstrap.js"></script>
+</body>
+
+</html>

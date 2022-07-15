@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/admin/bb.js"></script>
+    <script src="https://kit.fontawesome.com/93e1c8f0af.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
+    <title>f.pop 後台管理</title>
+    <style>
+        .fp-item>li>span {
+            padding: 15px;
+
+        }
+
+        #h6_fire {
+            font-family: "Font Awesome 6 Free" !important;
+            color: #ff6e4e;
+        }
+
+        .modal-inp {
+            height: 35px;
+            width: 200px;
+            border: 1px solid #acacac;
+            border-radius: 6px;
+            font-size: 10px;
+            margin: 5px 0;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <%- include("admin_navbar.ejs") %>
+        <!-- Main Content -->
+        <div class="fpop-main p-5" style="background-color: #fff;">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/goods">首頁</a></li>
+                    <li class="breadcrumb-item"><a href="#">商品管理</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">所有商品</li>
+                </ol>
+            </nav>
+            <span id="pall_id" style="display: none;">
+                <%- pall_id.product_id %>
+                    <% console.log(pall_id.product_id) %>
+            </span>
+            <h6 class="text-center"><i id="h6_fire" class="fas fa-fire" ></i>  最熱銷商品 TOP3</h6>
+            <div class="row justify-content-center align-items-center mb-4 text-center">
+                <% data3.forEach((item ,index)=> { %>
+                    <div class="card m-4 fpopCard">
+                        <div class="card-body ">
+                            <img  style="height: 150px;" src="/img/product/<%= item.product_image %>" alt="">
+                            <p  style="font-size:10px ;">
+                                <%= item.product_name %>
+                            </p>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+            <div id="layoutSidenav_content">
+                <div class="container-fluid px-4">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            所有商品
+                        </div>
+                        <div class="card-body" style="font-size:14px ;">
+                            <button type="button" class="btn btn-dark mt-2" data-bs-toggle="modal" style="float:right"
+                                data-bs-target="#exampleModal">
+                                新增商品
+                            </button>
+                            <table id="datatablesSimple">
+
+                                <thead>
+                                    <tr>
+
+                                        <th class="col-1" style="vertical-align:text-top;">編號</th>
+                                        <th class="col-2" style="vertical-align:text-top;">產品名稱</th>
+                                        <th class="col-2" style="vertical-align:text-top;">圖片</th>
+                                        <th class="col-1" style="vertical-align:text-top;">類別</th>
+                                        <th class="col-2" style="vertical-align:text-top;">敘述</th>
+                                        <th class="col-1" style="vertical-align:text-top;">價格</th>
+                                        <th class="col-1" style="vertical-align:text-top;">上架日期</th>
+                                        <th class="col-2" style="vertical-align:text-top;">操作</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody class="card-body">
+                                    <% data2.forEach((item ,index)=> { %>
+                                        <tr>
+
+                                            <td>
+                                                <%= item.product_code %>
+                                            </td>
+
+                                            <td>
+                                                <%= item.product_name%>
+                                            </td>
+                                            <td><img style="height: 50px;" src="/img/product/<%= item.product_image %>"
+                                                    alt="">
+                                                <img style="height: 50px;" src="/img/product/<%= item.product_image2 %>"
+                                                    alt="">
+                                                <img style="height: 50px;" src="/img/product/<%= item.product_image3 %>"
+                                                    alt="">
+                                                <img style="height: 50px;" src="/img/product/<%= item.product_image4 %>"
+                                                    alt="">
+                                            </td>
+                                            <td>
+                                                <%= item.product_category %>
+                                            </td>
+                                            <td>
+                                                <div class="box">
+                                                    <p class="ellipsis">
+                                                        <%= item.product_description %>
+                                                    </p>
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <%= item.product_price %> $
+                                            </td>
+                                            <td>
+                                                <%= moment(item.product_upload).format(shortDataFormat) %>
+                                            </td>
+                                            <td>
+
+                                                <button class="btn btn-outline-info btn-sm "
+                                                    onclick="Edit( <%= item.product_id %> )" class="btn btn-primary"
+                                                    data-toggle="modal" data-target="#myModal">編輯</button>
+                                                <button class="btn btn-outline-danger btn-sm"
+                                                    onclick="Delete( <%= item.product_id %> )">刪除</button>
+
+                                            </td>
+
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal" id="myModal">
+                <form id="form" class="modal-content" style="width: 400px;">
+                    <div class="text-center p-4">
+                        <input type="hidden" name="id">
+
+                        <h6 class="font-weight-bold">產品編號:<input class="modal-inp ml-3" type="text" name="product_code">
+                        </h6><br>
+                        <h6 class="font-weight-bold">產品名稱:<input class="modal-inp ml-3" type="text" name="product_name">
+                        </h6><br>
+                        <h6 class="font-weight-bold">類　　別:<input class="modal-inp ml-3" type="text"
+                                name="product_category">
+                        </h6><br>
+                        <h6 class="font-weight-bold">敘　　述:<input class="modal-inp ml-3" type="text"
+                                name="product_description">
+                        </h6><br>
+                        <h6 class="font-weight-bold">價　　格:<input class="modal-inp ml-3" type="number"
+                                name="product_price">
+                        </h6><br>
+                        <button class="btn btn-dark btn-sm mt-2 text-center" type="button" id="submit">更新</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal" id="exampleModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="width: 600px;">
+                        <button type="button" class="btn btn-danger m-3" data-bs-dismiss="modal"
+                            style="width: 40px;float:right" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg"
+                                width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg></button>
+
+                        <div class="container-fluid" id="mainform">
+                            <div class="mx-auto text-center">
+                                <h5 style="font-weight: 700;">新品上架</h5>
+                            </div>
+
+                            <form class="form-horizontal" role="form" method="post" action="/admin/goods/item_all"
+                                enctype="multipart/form-data">
+                                <div>
+                                    <div>
+
+                                        <div class="mx-5">
+                                            <input type="text" class="form-control col-7 mt-3" name="product_id"
+                                                style="display: none;" value="<%- pall_id.product_id %>">
+                                        </div>
+                                    </div>
+                                    <span id="pall_id" style="display: none;">
+                                        <%- pall_id.product_id %>
+                                            <% console.log(pall_id.product_id) %>
+                                    </span>
+                                    <div class="mx-5 row">
+                                        <div class="col-4 mx-5">
+                                            <label class="btn btn-outline-dark">
+                                                <input class="form-control mt-3" style="display:none;" type="file"
+                                                    name="product_image" onchange="readURL(this)"
+                                                    targetID="preview_progressbarTW_img"
+                                                    accept="image/gif, image/jpeg, image/png">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
+                                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                                    <path
+                                                        d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z" />
+                                                </svg> 上傳圖片
+                                            </label>
+                                        </div>
+                                        <img class="col-5 mt-3" id="preview_progressbarTW_img" src="" />
+                                    </div>
+                                    <div class="mx-5 row">
+                                        <div class="col-4 mx-5">
+                                            <label class="btn btn-outline-dark">
+                                                <input class="form-control mt-3" style="display:none;" type="file"
+                                                    name="product_image2" onchange="readURL1(this)"
+                                                    targetID1="preview_progressbarTW_img1"
+                                                    accept="image/gif, image/jpeg, image/png">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
+                                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                                    <path
+                                                        d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z" />
+                                                </svg> 上傳圖片
+                                            </label>
+                                        </div>
+                                        <img class="col-5 mt-3" id="preview_progressbarTW_img1" src="" />
+                                    </div>
+                                    <div class="mx-5 row">
+                                        <div class="col-4 mx-5">
+                                            <label class="btn btn-outline-dark">
+                                                <input class="form-control mt-3" style="display:none;" type="file"
+                                                    name="product_image3" onchange="readURL2(this)"
+                                                    targetID2="preview_progressbarTW_img2"
+                                                    accept="image/gif, image/jpeg, image/png">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
+                                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                                    <path
+                                                        d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z" />
+                                                </svg> 上傳圖片
+                                            </label>
+                                        </div>
+                                        <img class="col-5 mt-3" id="preview_progressbarTW_img2" src="" />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="mx-5">產品名稱</label>
+                                    <div class="mx-5">
+                                        <input type="text" class="form-control col-7 mt-3" name="product_name"
+                                            placeholder="產品名稱">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="product_category" class="mx-5">類別</label>
+                                    <div class="mx-5">
+                                        <select class="custom-select col-7 mt-3" name="product_category"
+                                            data-table="order-table">
+                                            <option>上衣</option>
+                                            <option>下著</option>
+                                            <option>鞋</option>
+                                            <option>包</option>
+                                            <option>洋裝</option>
+                                            <option>帽子</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="product_gender" class="mx-5">F / M</label>
+                                    <div class="mx-5">
+                                        <select class="custom-select col-7 mt-3" name="product_gender"
+                                            data-table="order-table">
+                                            <option>Female</option>
+                                            <option>Male</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="mx-5">選擇尺寸</label>
+                                    <div class="form-check mx-5">
+                                        <input class="form-check-input" type="checkbox" name="size_name" id="radioS"
+                                            value="S">
+                                        <label class="form-check-label" for="radioS">S</label>
+                                    </div>
+                                    <div class="form-check mx-5">
+                                        <input class="form-check-input" type="checkbox" name="size_name" id="radioM"
+                                            value="M">
+                                        <label class="form-check-label" for="radioM">M</label>
+                                    </div>
+                                    <div class="form-check mx-5">
+                                        <input class="form-check-input" type="checkbox" name="size_name" id="radioL"
+                                            value="L">
+                                        <label class="form-check-label" for="radioL">L</label>
+                                    </div>
+                                    <div class="form-check mx-5">
+                                        <input class="form-check-input" type="checkbox" name="size_name" id="radioO"
+                                            value="ONE SIZE">
+                                        <label class="form-check-label" for="radioO">ONE SIZE</label>
+                                    </div>
+                                </div>
+                                <div class=" mt-2">
+                                    <label class="mx-5">產品敘述</label>
+                                    <div class="mx-5">
+                                        <textarea class="col-7 mt-3" name="product_description" rows="5" cols="33"
+                                            required>輸入文字..
+                                            </textarea>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="mx-5">產品成分</label>
+                                    <div class="mx-5">
+                                        <textarea class="col-7 mt-3" name="product_composition" rows="5" cols="33"
+                                            required>輸入文字..
+                                            </textarea>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="product_price" class="mx-5">產品價格</label>
+                                    <div class="mx-5 ">
+                                        <input type="text" class="form-control col-7 mt-3" name="product_price"
+                                            placeholder="產品價格">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="product_price" class="mx-5">產品編號</label>
+                                    <div class="mx-5 ">
+                                        <input type="text" class="form-control col-7 mt-3" name="product_code"
+                                            placeholder="產品編號">
+                                    </div>
+                                </div>
+
+                                <!-- Button -->
+                                <div class="mx-5 ">
+                                    <button id="btn-signup" type="submit" class="btn btn-info mt-5 mb-5">
+                                        <i class="icon-hand-right"></i> 送出</button>
+                                    <!-- &nbsp -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function Edit(id) {
+                $.ajax({
+                    url: "http://localhost:3000/admin/goods/item_del/detail/" + id,
+                    type: "GET",
+                    success: function (res) {
+                        console.log(id)
+                        var res = JSON.parse(res)
+                        //將值傳遞進input裏頭
+                        $("input[name='id']").val(res.data.product_id)
+                        $("input[name='product_code']").val(res.data.product_code)
+                        $("input[name='product_name']").val(res.data.product_name)
+                        $("input[name='product_category']").val(res.data.product_category)
+                        $("input[name='product_description']").val(res.data.product_description)
+                        $("input[name='product_price']").val(res.data.product_price)
+                    },
+                    error: function () {
+                        alert("系統錯誤!")
+                    },
+                })
+            }
+
+            $('#submit').on('click', function () {
+
+                //整理表單資料到變數
+                var data = $('#form').serializeArray()
+                JSONData = serializeToJSON(data)
+                console.log(data)
+                console.log(JSONData)
+
+                $.ajax({
+                    url: "http://localhost:3000/admin/goods/item_del/update",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSONData,
+                    success: function (res) {
+                        var res = JSON.parse(res)
+                        if (res.errno === 1) {
+                            alert("更新成功!")
+                            location.reload()
+                        } else if (res.errno === 0) {
+                            alert("更新失敗!")
+                        }
+                    },
+                    error: function () {
+                        alert("系統錯誤!")
+                    }
+                })
+            })
+            function serializeToJSON(data) {
+                var values = {};
+                for (index in data) {
+                    values[data[index].name] = data[index].value;
+                }
+                return JSON.stringify(values)
+            }
+            function Delete(id) {
+                var JSONData = { "id": id }
+                JSONData = JSON.stringify(JSONData)
+                $.ajax({
+                    url: "http://localhost:3000/admin/goods/item_all/delete",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSONData,
+                    success: function (res) {
+                        var res = JSON.parse(res)
+                        if (res.errno === 1) {
+                            alert("刪除成功!")
+                            location.reload()
+                        } else if (res.errno === 0) {
+                            alert("刪除失敗!")
+                        }
+                    },
+                    error: function () {
+                        console.log(id)
+                        alert("系統錯誤!")
+                    }
+                })
+            }
+
+            $(document).ready(function () {
+                $('#dataTable').DataTable();
+            });
+            window.addEventListener('DOMContentLoaded', event => {
+                const datatablesSimple = document.getElementById('datatablesSimple');
+                if (datatablesSimple) {
+                    new simpleDatatables.DataTable(datatablesSimple);
+                }
+            });
+
+            $(document).ready(function () {
+                $('#dataTable').DataTable();
+            });
+
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var imageTagID = input.getAttribute("targetID");
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = document.getElementById(imageTagID);
+                        img.setAttribute("src", e.target.result)
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            };
+            function readURL1(input) {
+                if (input.files && input.files[0]) {
+                    var imageTagID1 = input.getAttribute("targetID1");
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = document.getElementById(imageTagID1);
+                        img.setAttribute("src", e.target.result)
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            };
+            function readURL2(input) {
+                if (input.files && input.files[0]) {
+                    var imageTagID2 = input.getAttribute("targetID2");
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = document.getElementById(imageTagID2);
+                        img.setAttribute("src", e.target.result)
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            };
+
+            window.addEventListener('DOMContentLoaded', event => {
+
+
+                const datatablesSimple = document.getElementById('datatablesSimple');
+                if (datatablesSimple) {
+                    new simpleDatatables.DataTable(datatablesSimple);
+                }
+            });
+
+        </script>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

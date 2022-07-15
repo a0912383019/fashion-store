@@ -1,0 +1,49 @@
+// Bootstrap 4.6.1
+// Custom.scss
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+//Owl Carousel 2插件 2.3.4\
+@import "./pages/shop_cart/owl.theme.default.scss";
+@import "./pages/shop_cart/owl.carousel.scss";
+
+
+
+
+// //layout樣式
+@import"_main.scss";
+
+//header樣式
+@import"components/navbar/_all.scss";
+
+
+//footer樣式
+@import"components/footer/_fpop.scss";
+
+
+
+
+// index樣式
+@import "./pages/home/pageone";
+@import "./pages/home/pagetwo";
+@import "./pages/home/pagethree";
+@import "./pages/home/spin";
+@import "./pages/home/navbar";
+@import "./pages/home/pagenewi";
+@import "./pages/home/pagefour";
+@import "./pages/home/slick_theme";
+@import "./pages/home/slick";
+
+// //shop_cart樣式
+@import "./pages/shop_cart/shop_cart";
+@import "./pages/shop_cart/shop_cartRwd";
+
+
+// // member樣式
+@import"./pages/member/jquery-ui";
+
+// //product樣式
+// @import"./pages/product/style";
+
+
+//admin樣式
+@import"./pages/admin/fpop";

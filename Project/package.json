@@ -1,0 +1,39 @@
+{
+  "name": "fn_pop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "blowup": "^1.0.2",
+    "body-parser": "^1.20.0",
+    "bootstrap": "^4.6.1",
+    "bootstrap-icons": "^1.8.3",
+    "chart.js": "^3.8.0",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.8",
+    "events": "^3.3.0",
+    "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
+    "express-session": "^1.17.3",
+    "jquery": "^3.6.0",
+    "lazyload": "^2.0.0-rc.2",
+    "moment": "^2.29.3",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.16",
+    "orm": "^7.1.0",
+    "simple-datatables": "^3.2.0"
+  },
+  "devDependencies": {
+    "file-loader": "^6.2.0",
+    "url-loader": "^4.1.1"
+  }
+}
