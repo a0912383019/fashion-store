@@ -13,6 +13,9 @@ var shop_cartModel = {
   },
 
   updateCartCount: (cart, req) => {
+    // console.log(cart);
+    // console.log(req.body);
+    // console.log(req.session);
     let count = 0;
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].quantity) {

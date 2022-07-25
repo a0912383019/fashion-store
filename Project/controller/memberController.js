@@ -35,25 +35,54 @@ var memberController = {
     handlechangePw: (req, res, next) => {
         var { oldpw, newpw, newpwAgain } = req.body;
         var s_cAccount = req.session.memberprofile.cAccount;
+        console.log('-----------start handlechangePW--------');
+        console.log('oldpw')
         console.log(oldpw);
+        console.log("newpw");
         console.log(newpw);
+        console.log("newpwAgain");
         console.log(newpwAgain);
+        console.log("s_cAccount");
+        console.log(s_cAccount);
+
         if (!oldpw) {
             req.flash('errorMessage', '舊密碼不可為空')
             return next();
         } else if (!newpw || !newpwAgain) {
             req.flash('errorMessage', '新密碼不可為空')
             return next();
-        } else if (req.session.memberprofile.cPassword != oldpw) {
-            req.flash('errorMessage', '舊密碼不正確')
-            return next();
-        } else if (newpw != newpwAgain) {
-            req.flash('errorMessage', '新密碼必須為一致')
-            return next();
-        } else {
-            memberModel.memberPwChange({ newpw, s_cAccount }, (err, result) => {
-                console.log('already change pw');
-                res.redirect('/home/member/memberData_changePw');
+        } else if (oldpw) {
+
+            memberModel.memberPwCheck(s_cAccount, (err, result) => {
+                bcrypt.compare(oldpw, result.cPassword, (err, isSuccess) => {
+                    console.log('--------in bcrypt check pw-----------');
+                    // console.log('lodpw');
+                    // console.log(oldpw);
+                    // console.log('result.pw')
+                    // console.log(result.cPassword);
+                    // console.log(err);
+                    // console.log(isSuccess);
+                    if (err || !isSuccess) {
+                        req.flash('errorMessage', '密碼錯誤');
+                        return next();
+                    } else {
+                        bcrypt.hash(newpw, saltRounds, (err, hash) => {
+                            console.log('--------in bcrypt hash-----------')
+                            if (err) {
+                                req.flash('errorMessage', err.toString());
+                            }
+                            memberModel.updateMemberPw({ newpw: hash, s_cAccount },
+                                (err) => {
+                                    if (err) {
+                                        console.log(err);    //    輸出資料庫錯誤資訊
+                                        console.log('PW change error')
+                                    } else {
+                                        console.log('PW update SUCCESS');                                    }
+                                });
+                        });
+                        res.redirect('/home/member/memberData_changePw');
+                    }
+                })
             })
         }
     },
@@ -69,15 +98,12 @@ var memberController = {
         // 資料庫撈資料
         memberModel.handlelogin(cAccount, (err, result) => {
             console.log('result.........');
-            console.log(result);
+            // console.log(result);
             if (!result) {
                 req.flash('errorMessage', '無此使用者');
                 return next();
             }
-            // if (result.cPassword != cPassword) {
-            //     req.flash('errorMessage', '密碼不正確');
-            //     return next();
-            // }
+
             //    驗證密碼是否正確，三個參數代表: 明碼, 雜湊密碼, 方法
             bcrypt.compare(cPassword, result.cPassword, (err, isSuccess) => {
                 if (err || !isSuccess) {
@@ -86,9 +112,9 @@ var memberController = {
                 }
 
                 // 將撈到的資料存入memberprofile session之中
-                console.log('寫入session');
+                // console.log('寫入session');
                 req.session.memberprofile = result;
-                console.log(req.session.url);
+                // console.log(req.session.url);
                 res.redirect(req.session.url);
 
             })
@@ -100,7 +126,7 @@ var memberController = {
     },
 
     register: (req, res) => {
-        console.log(req.session.url);
+        // console.log(req.session.url);
         res.render('register', {
 
         });
@@ -115,7 +141,7 @@ var memberController = {
             return res.end("電子郵件已有人使用");    //    向前臺返回資料
         });
 
-        console.log(`body.cPassword: ${cPassword}`);
+        // console.log(`body.cPassword: ${cPassword}`);
 
         bcrypt.hash(cPassword, saltRounds, (err, hash) => {
             if (err) {
@@ -140,8 +166,8 @@ var memberController = {
         // })
     },
     registerCheck: (req, res) => {
-        res.render('member/register_success', {
-            title: '註冊成功'
+        res.render('member/login2', {
+            title: '登入'
         })
     },
 
@@ -151,7 +177,7 @@ var memberController = {
                 // console.log(result);
                 res.render('member/orderList', {
                     title: '會員資料｜訂單清單',
-                    result: result,
+                    result: result
 
                 });
             })
@@ -162,6 +188,16 @@ var memberController = {
         }
 
 
+    },
+
+    orderDetail: (req, res) => {
+        var order_number = req.params.order_number;
+        memberModel.getDetail(order_number, (err, result) => {
+            res.render(`member/orderDetail`, {
+                title: '會員資料｜訂單內容',
+                result: result
+            });
+        })
     }
 
 }

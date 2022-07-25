@@ -13,13 +13,14 @@
     <script src="/js/home/jquery.min.js"></script>
     <script src="/js/home/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
 
 
-    <title>function.pop</title>
+    <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
+    <title>f.pop 官方網站</title>
     <style>
         * {
             margin: 0;
@@ -62,12 +63,9 @@
 
         #gotop {
             position: fixed;
-            border-radius: 50px;
             right: 30px;
-            bottom: 30px;
-            padding: 7px 20px;
-            font-size: 25px;
-            background: rgba(255, 234, 234, 0.36);
+            /* bottom: 450px; */
+            top: 47%;
             color: #ffffff;
             cursor: pointer;
             z-index: 1000;
@@ -75,12 +73,9 @@
 
         #godown {
             position: fixed;
-            border-radius: 50px;
             right: 30px;
-            bottom: 110px;
-            padding: 7px 20px;
-            font-size: 25px;
-            background: rgba(255, 234, 234, 0.36);
+            /* bottom: 400px; */
+            top: 53%;
             color: #ffffff;
             cursor: pointer;
             z-index: 1000;
@@ -126,11 +121,66 @@
         }
 
         .slick-active {
-            opacity: .5;
+            opacity: 1;
         }
 
         .slick-current {
             opacity: 1;
+        }
+
+        .handwind img {
+            width: 600px;
+        }
+
+        @media screen and (max-width:600px) {
+            .handwind img {
+                height: 300px;
+            }
+        }
+
+        .search__input1 {
+            width: 100%;
+            padding: 12px 24px;
+            background-color: transparent;
+            transition: transform 250ms ease-in-out;
+            font-size: 14px;
+            line-height: 15px;
+            color: #ffffff;
+            /* background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' style='color: #ffffff' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E"); */
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            background-position: 95% center;
+            border-radius: 50px;
+            border: 1px solid #ffffff;
+            transition: all 250ms ease-in-out;
+            backface-visibility: hidden;
+        }
+
+        .search__input1::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .search__input1:hover,
+        .search__input1:focus {
+            padding: 8px 0;
+            outline: 0;
+            border: 1px solid transparent;
+            border-bottom: 1px solid #ffffff;
+            border-radius: 0;
+        }
+
+        .fm {
+            height: 160px;
+        }
+
+        .figword {
+            height: 120px;
+        }
+
+        .ero {
+            margin: 8% auto;
         }
     </style>
 
@@ -143,17 +193,25 @@
     </div>
 
     <div id="godown">
-        <h1>v</h1>
+        <h5><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+            </svg></h5>
     </div>
     <div id="gotop">
-        <h1>˄</h1>
+        <h5><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+            </svg></h5>
     </div>
 
     <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark fixed-top nav_class">
 
         <div class="storytitle" id="story">
-            <p class="stories">STORIES</p>
-            <hr width="130px" style="background-color: yellow; position: relative; top: -10px;left: 5px;">
+            <h2 class="stories" style="color: #ffffff;">STORIES</h2>
+            <!-- <hr width="130px" style="background-color: yellow; position: relative; top: -10px;left: 5px;"> -->
         </div>
         <div class="storytitle" id="history">
             <h2 style="color: #ffffff;">History</h2>
@@ -198,9 +256,13 @@
 
     </nav>
     <div class="pr-2 icondiv" id="navbar_li">
-        <form class=" my-2 ml-auto">
-            <input class="form-control mr-sm-2 tysearch_input" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn  my-2 my-sm-0 search_button" type="submit"></button>
+        <form class=" my-2 ml-auto" id="search__input1">
+            <input class="search__input1 mr-sm-2" type="search" placeholder="搜尋" style=" width: 150px;
+            position: relative;
+            height: 40px;
+            margin-left: 82px;
+            transform: translateY(2px);" />
+
         </form>
         <div class="mt-4 icon_posi">
             <p style="text-align: right;">
@@ -271,35 +333,40 @@
     <div class="pagetwo gg" id="pagetwo">
 
 
-        <div style="position: relative; width: 74%; margin:auto;" id="pagetwoin">
+        <div class="ero" style="position: relative; width: 74%;" id="pagetwoin">
 
             <div class="row" style="display: flex; flex-wrap: wrap;">
 
-                <div class="col col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy" id="rowtwo"
-                    style="flex-grow: 1; margin: 10px auto;">
+                <div class="col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy" style="flex-grow: 1; margin: 10px auto;">
 
-                    <figure class="figure">
-                        <img class="figure-img img-fluid" src="/img/home/fashion1.jpg" alt="" id="getpagetwoimg">
-                        <figcaption class="d-none d-md-block">
-                            <p>Guests Attending Exquisite Gucci
-                                A PHOTO GALLERY ></p>
-                            <p style="font-size: 10px;">打敗濕悶熱,夏季必備涼感穿搭</p>
-                        </figcaption>
-                    </figure>
+                    <div>
+                        <figure class="figure">
+                            <img class="figure-img img-fluid fm" src="/img/home/fashion1.jpg" alt="">
+                            <figcaption class="d-none d-md-block figword">
+                                <p>Guests Attending Exquisite Gucci
+                                    A PHOTO GALLERY ></p>
+                                <p style="font-size: 10px;">打敗濕悶熱,夏季必備涼感穿搭</p>
+                            </figcaption>
+                        </figure>
+                    </div>
 
-                    <figure class="figure downpic">
-                        <img class="figure-img img-fluid" src="/img/home/fashion4.jpg" alt="">
-                        <figcaption class="d-none d-md-block">
-                            <p>Exquisite Beauty of neputon
-                                THE MAKEUP AT THE SHOW </p>
-                            <p style="font-size: 10px;">打敗濕悶熱,夏季必備涼感穿搭</p>
-                        </figcaption>
-                    </figure>
+                    <div>
+                        <figure class="figure">
+                            <img class="figure-img img-fluid fm" src="/img/home/fashion4.jpg" alt="">
+                            <figcaption class="d-none d-md-block">
+                                <p>Exquisite Beauty of neputon
+                                    THE MAKEUP AT THE SHOW </p>
+                                <p style="font-size: 10px;">打敗濕悶熱,夏季必備涼感穿搭</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+
                 </div>
 
-                <div class="col col-3 d-none d-xl-block midpic yy colyy" style="flex-grow: 1; margin: 10px auto;">
+                <div class="col-3 d-none d-xl-block" style="flex-grow: 1; margin: 10px auto;">
                     <figure class="figure">
-                        <img class="figure-img img-fluid" src="/img/home/661.png" alt="" style="height: 100%;">
+                        <img class="figure-img img-fluid fm" src="/img/home/661.png" alt=""
+                            style="height: 465px;border: 1px solid rgb(240, 231, 144);">
                         <figcaption>
                             <p>Fashioning Masculinities
                                 THE ART OF MENSWEAR </p>
@@ -308,24 +375,31 @@
                     </figure>
 
                 </div>
-                <div class="col col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy" style="flex-grow: 1; margin: 10px auto;">
-                    <figure class="figure">
-                        <img class="figure-img img-fluid" style="" src="https://www.go2tec.it/sec-content/uploads/2016/12/FASHION.jpg" alt="">
-                        <figcaption class="d-none d-md-block">
-                            <p>Fashioning Masculinities
-                                THE ART OF MENSWEAR </p>
-                            <p style="font-size: 10px;">打敗濕悶熱,夏季必備涼感穿搭</p>
-                        </figcaption>
-                    </figure>
 
-                    <figure class="figure downpic">
-                        <img class="figure-img img-fluid" src="/img/home/fashion5.jpg" alt="">
-                        <figcaption class="d-none d-md-block">
-                            <p>Magical Mirrors Lucas develope
-                                EXQUISITE GUCCI</p>
-                            <p style="font-size: 10px;">打敗濕悶熱,夏季必備涼感穿搭</p>
-                        </figcaption>
-                    </figure>
+                <div class="col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy" style="flex-grow: 1; margin: 10px auto;">
+
+                    <div>
+                        <figure class="figure">
+                            <img class="figure-img img-fluid fm"
+                                src="https://www.go2tec.it/sec-content/uploads/2016/12/FASHION.jpg" alt="">
+                            <figcaption class="d-none d-md-block figword">
+                                <p>Fashioning Masculinities
+                                    THE ART OF MENSWEAR </p>
+                                <p style="font-size: 10px;">打敗濕悶熱,夏季必備涼感穿搭</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div>
+                        <figure class="figure">
+                            <img class="figure-img img-fluid fm" src="/img/home/fashion5.jpg" alt="">
+                            <figcaption class="d-none d-md-block">
+                                <p>Magical Mirrors Lucas develope
+                                    EXQUISITE GUCCI</p>
+                                <p style="font-size: 10px;">打敗濕悶熱,夏季必備涼感穿搭</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+
                 </div>
             </div>
 
@@ -342,7 +416,7 @@
                     <img src="/img/home/couponblack.png" class="figure-img img-fluid threeimg">
                 </figure>
             </div>
-            <div class="col col-9 col-md-3 automid d-none d-md-block col_class colyy" style="margin:0 ;">
+            <div class="col col-9 col-md-3 automid d-none d-md-block col_class colyy" style="margin:0;">
                 <figure class="figure ttt">
                     <img src="/img/home/couponblack.png" class="figure-img img-fluid threeimg">
                 </figure>
@@ -378,7 +452,7 @@
             </section>
         </div>
 
-        <div style="position: relative; width: 85%; margin: 90px auto;" id="thirdmargin">
+        <div style="position: relative; width: 85%; margin: 100px auto;" id="thirdmargin">
             <div class="row zzz justify-content-center align-items-start">
                 <div class="col-md-2">
                     <img src="/img/home/icon/ico1.png" alt="" style="height: 50px;width:50px">
@@ -421,30 +495,30 @@
         </div>
     </div>
     <!-- 手風琴那頁 -->
-    <div class="pagefour gg" id="pagefour">
-        <br><br>
+    <div class="pagefour gg " id="pagefour">
+
         <div class="accordion" id="zA7n">
-            <ul class="accordion__ul">
-                <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/1.jpg" alt="" /></li>
-                <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/2.jpg" alt="" /></li>
-                <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/3.jpg" alt="" /></li>
-                <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/4.jpg" alt="" /></li>
-                <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/5.jpg" alt="" /></li>
+            <ul class="accordion__ul handwind">
+                <li class="accordion__li"><img class="accordion__img" src="/img/home/tsat-07.jpg" alt="" /></li>
+                <li class="accordion__li"><img class="accordion__img" src="/img/home/tsat-09.jpg" alt="" /></li>
+                <li class="accordion__li"><img class="accordion__img" src="/img/home/tsat-08.jpg" alt="" /></li>
+                <li class="accordion__li"><img class="accordion__img" src="/img/home/tsat-10.jpg" alt="" /></li>
+                <li class="accordion__li"><img class="accordion__img" src="/img/home/tsat-11.jpg" alt="" /></li>
                 <!-- <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/6.jpg" alt="" /></li> -->
             </ul>
         </div>
-        <br><br> <br>
-        <%- include("footer.ejs") %>
+
+
+            <%- include("footer.ejs") %>
+
+
     </div>
 
 
 
 
-        
 
 
-
-    
 
 
 </body>
@@ -454,19 +528,17 @@
 <script src="/js/home/zA7n-min.js"></script>
 <script>
     // console.log(window.screen.height);
-    console.log(window.innerWidth);
+    // console.log(window.innerWidth);
     // console.log($(window).width());
     // console.log(document.documentElement.clientWidth);
 
     // 過場動畫
     $("#status").delay(1700).fadeOut(1300); //delay --> 延遲幾秒才fadeOut
     $("#preloader").delay(2400).fadeOut(1300);
-    // $(window).load(function () {
-			
-	// 	});
+
     $(document).ready(function () {
 
-        $('#zA7n').zA7n({});    
+        $('#zA7n').zA7n({});
         // 最下方輪播圖
         $(".regular").slick({
             dots: true,
@@ -481,64 +553,71 @@
         console.log(hei);
         $("#pageone").css("height", `${hei}px`);
         $("#pagenewi").css("top", `${hei}px`);
-        $("#pagenewi").css("height", `${hei}px`);
-        $("#pagetwo").css("top", `${hei * 2}px`);
-        $("#pagetwo").css("min-height", `${hei}px`);
+        $("#pagenewi").css("min-height", `${hei}px`);
+        var nwihei = parseInt($("#pagenewi").css("height"));
+
+        $("#pagetwo").css("top", `${nwihei + hei}px`);
+        $("#pagetwo").css("height", `${hei}px`);
         $("#pagethree").css("min-height", `${hei}px`);
         // $("#pagefour").css("top", `${hei}px`);
         $("#pagefour").css("min-height", `${hei}px`);
-        console.log($("#pageone").css("height") + "vvv");
-        console.log($("#pagetwo").css("height") + "qqq");
+        // console.log($("#pageone").css("height") + "vvv");
+        // console.log($("#pagetwo").css("height") + "qqq");
 
 
 
-        console.log($("#rowtwo").css("height"))
-        var pagetwopichei = parseInt($("#rowtwo").css("height"));
+        // console.log($("#rowtwo").css("height"))
+        // var pagetwopichei = parseInt($("#rowtwo").css("height"));
+        if (document.documentElement.clientHeight > 1000) {
+            $("#pagetwoin").css("margin-top", "15%");
+        }else if(document.documentElement.clientHeight <= 1000){
+                $("#pagetwoin").css("margin-top", "8%");
+            }
         // var wid = document.documentElement.clientWidth;
         // $(".third_tit").css("height", `${$(".ooo")[0].clientHeight}px`);
         // $(".thirdhei").css("height", `${($(".ooo")[0].clientHeight) * 2 + 2}px`);
 
-        $(".downpic img").css("height", `${$("#getpagetwoimg").css("height")}`);
-        $(".downpic img").css("width", `${$("#getpagetwoimg").css("width")}`);
-        $(".downpic").css("top", `${parseInt($(".midpic img").css("height")) - parseInt($(".downpic img").css("height"))}px`);
+        // $(".downpic img").css("height", `${$("#getpagetwoimg").css("height")}`);
+        // $(".downpic img").css("width", `${$("#getpagetwoimg").css("width")}`);
+        // $(".downpic").css("top", `${parseInt($(".midpic img").css("height")) - parseInt($(".downpic img").css("height"))}px`);
 
         // console.log((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850))
-        if (window.innerWidth < 1600) {
-            $("#pagetwoin").css("margin-top", "130px");
-        }
-        if ((window.innerWidth < 1450) && (document.documentElement.clientHeight >= 850)) {
-            $("#pagetwoin").css("margin-top", "220px");
-        }
-        if ((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850)) {
-            $(".downpic").css("top", `${parseInt($("#getpagetwoimg").css("height")) + 120}px`);
-            $(".downpic").css("left", "15px");
-            $("#pagetwoin").css("margin-top", "120px");
-        }
-        else if ((window.innerWidth < 1200) && (document.documentElement.clientHeight >= 850)) {
-            $(".downpic").css("top", `${parseInt($("#getpagetwoimg").css("height")) + 150}px`);
-        }
-        if ((window.innerWidth < 768) && (document.documentElement.clientHeight < 850)) {
-            $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
-            $(".downpic").css("left", `15px`);
-            $("#pagetwoin").css("height", `${pagetwopichei * 4.5}px`);
-        } else if ((window.innerWidth < 768) && (document.documentElement.clientHeight >= 850)) {
-            $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
-            $("#pagetwoin").css("margin-top", "150px");
-        }
-        if ((window.innerWidth < 577) && (document.documentElement.clientHeight < 850)) {
-            // $(".storytitle").css("top", "9%");
-            console.log(document.getElementById("newi_img").src);
-            document.getElementById("newi_img").src = "/img/home/tsat-06.png";
-            $(".figure-img").css("margin-bottom", "0px");
-            $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
-            $("#pagetwoin").css("margin-top", "170px");
-        } else if (window.innerWidth < 577) {
-            // $(".storytitle").css("top", "8%");
-            console.log(document.getElementById("newi_img").src);
-            document.getElementById("newi_img").src = "/img/home/tsat-06.png";
-            $(".figure-img").css("margin-bottom", "0px");
-            $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
-        }
+        // if (window.innerWidth < 1600) {
+        //     $("#pagetwoin").css("margin-top", "130px");
+        // }
+        // if ((window.innerWidth < 1450) && (document.documentElement.clientHeight >= 850)) {
+        //     $("#pagetwoin").css("margin-top", "220px");
+        // }
+        // if ((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850)) {
+        //     $(".downpic").css("top", `${parseInt($("#getpagetwoimg").css("height")) + 120}px`);
+        //     $(".downpic").css("left", "15px");
+        //     // $("#pagetwoin").css("margin-top", "120px");
+        // }
+        // else if ((window.innerWidth < 1200) && (document.documentElement.clientHeight >= 850)) {
+        //     $(".downpic").css("top", `${parseInt($("#getpagetwoimg").css("height")) + 150}px`);
+        // }
+        // if ((window.innerWidth < 768) && (document.documentElement.clientHeight < 850)) {
+        //     $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
+        //     $(".downpic").css("left", `15px`);
+        //     $("#pagetwoin").css("height", `${pagetwopichei * 4.5}px`);
+        // } else if ((window.innerWidth < 768) && (document.documentElement.clientHeight >= 850)) {
+        //     $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
+        //     // $("#pagetwoin").css("margin-top", "150px");
+        // }
+        // if ((window.innerWidth < 577) && (document.documentElement.clientHeight < 850)) {
+        //     // $(".storytitle").css("top", "9%");
+        //     console.log(document.getElementById("newi_img").src);
+        //     document.getElementById("newi_img").src = "/img/home/tsat-06.png";
+        //     $(".figure-img").css("margin-bottom", "0px");
+        //     $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
+        //     // $("#pagetwoin").css("margin-top", "170px");
+        // } else if (window.innerWidth < 577) {
+        //     // $(".storytitle").css("top", "8%");
+        //     console.log(document.getElementById("newi_img").src);
+        //     document.getElementById("newi_img").src = "/img/home/tsat-06.png";
+        //     $(".figure-img").css("margin-bottom", "0px");
+        //     $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
+        // }
         if (window.innerWidth < 430) {
             document.getElementById("newi_img").src = "/img/home/tsat-06.png";
         }
@@ -548,24 +627,24 @@
             // $(".storytitle").css("top", "15px");
             document.getElementById("newi_img").src = "/img/home/tsat-02.jpg";
         }
-        if (window.innerWidth >= 577) {
-            // $(".storytitle").css("top", "15px");
-        }
-        if (window.innerWidth >= 768) {
-            $("#pagetwoin").css("height", `${pagetwopichei * 2}px`);
-        }
-        if (window.innerWidth >= 1200) {
-            $("#pagetwoin").css("height", `${pagetwopichei}px`);
-        }
-        if (window.innerWidth >= 1450) {
-            $("#pagetwoin").css("margin-top", "130px");
-        }
-        if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight < 850)) {
-            $("#pagetwoin").css("margin-top", "100px");
-        }
-        if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight >= 850)) {
-            $("#thirdmargin").css("margin-top", "0px");
-        }
+        // if (window.innerWidth >= 577) {
+        //     // $(".storytitle").css("top", "15px");
+        // }
+        // if (window.innerWidth >= 768) {
+        //     $("#pagetwoin").css("height", `${pagetwopichei * 2}px`);
+        // }
+        // if (window.innerWidth >= 1200) {
+        //     $("#pagetwoin").css("height", `${pagetwopichei}px`);
+        // }
+        // if (window.innerWidth >= 1450) {
+        //     $("#pagetwoin").css("margin-top", "130px");
+        // }
+        // if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight < 850)) {
+        //     $("#pagetwoin").css("margin-top", "100px");
+        // }
+        // if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight >= 850)) {
+        //     $("#thirdmargin").css("margin-top", "0px");
+        // }
         var thirdpagetop = parseInt($("#pagetwo").css("height")) + hei + hei;
         $("#pagethree").css("top", `${thirdpagetop}px`);
         var fourpagetop = parseInt($("#pagethree").css("height")) + thirdpagetop;
@@ -576,52 +655,56 @@
 
         function start() {
 
+            if (document.documentElement.clientHeight > 1000) {
+                $("#pagetwoin").css("margin-top", "15%");
+            }else if(document.documentElement.clientHeight <= 1000){
+                $("#pagetwoin").css("margin-top", "8%");
+            }
+            // var pagetwopichei = parseInt($("#rowtwo").css("height"));
+            // $(".downpic img").css("height", `${$("#getpagetwoimg").css("height")}`);
+            // $(".downpic img").css("width", `${$("#getpagetwoimg").css("width")}`);
+            // //外面兩張圖對其中間圖的下方 
+            // $(".downpic").css("top", `${parseInt($(".midpic img").css("height")) - parseInt($(".downpic img").css("height"))}px`)
 
-            var pagetwopichei = parseInt($("#rowtwo").css("height"));
-            $(".downpic img").css("height", `${$("#getpagetwoimg").css("height")}`);
-            $(".downpic img").css("width", `${$("#getpagetwoimg").css("width")}`);
-            //外面兩張圖對其中間圖的下方 
-            $(".downpic").css("top", `${parseInt($(".midpic img").css("height")) - parseInt($(".downpic img").css("height"))}px`)
+            // //page 3 中間區塊大小 
+            // // $(".third_tit").css("height", `${$(".ooo")[0].clientHeight}px`);
+            // // $(".thirdhei").css("height", `${($(".ooo")[0].clientHeight) * 2 + 2}px`);
 
-            //page 3 中間區塊大小 
-            // $(".third_tit").css("height", `${$(".ooo")[0].clientHeight}px`);
-            // $(".thirdhei").css("height", `${($(".ooo")[0].clientHeight) * 2 + 2}px`);
-
-            if (window.innerWidth < 1600) {
-                $("#pagetwoin").css("margin-top", "130px");
-            }
-            if ((window.innerWidth < 1450) && (document.documentElement.clientHeight >= 850)) {
-                $("#pagetwoin").css("margin-top", "220px");
-            }
-            if ((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850)) {
-                $(".downpic").css("top", `${parseInt($(".figure img").css("height")) + 120}px`);
-                $(".downpic").css("left", "15px");
-                $("#pagetwoin").css("margin-top", "120px");
-            }
-            else if (window.innerWidth < 1200) {
-                $(".downpic").css("top", `${parseInt($(".figure img").css("height")) + 150}px`);
-            }
-            if ((window.innerWidth < 768) && (document.documentElement.clientHeight < 850)) {
-                $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
-                $("#pagetwoin").css("height", `${pagetwopichei * 4.5}`);
-            } else if (window.innerWidth < 768) {
-                $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
-                $("#pagetwoin").css("margin-top", "150px");
-            }
-            if ((window.innerWidth < 577) && (document.documentElement.clientHeight < 850)) {
-                // $(".storytitle").css("top", "9%");
-                // console.log(document.getElementById("newi_img").src);
-                // document.getElementById("newi_img").src = "/img/home/tsat-06.png";
-                $(".figure-img").css("margin-bottom", "0px");
-                $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
-                $("#pagetwoin").css("margin-top", "170px");
-            } else if (window.innerWidth < 577) {
-                // $(".storytitle").css("top", "8%");
-                // console.log(document.getElementById("newi_img").src);
-                // document.getElementById("newi_img").src = "/img/home/tsat-06.png";
-                $(".figure-img").css("margin-bottom", "0px");
-                $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
-            }
+            // // if (window.innerWidth < 1600) {
+            // //     $("#pagetwoin").css("margin-top", "130px");
+            // // }
+            // // if ((window.innerWidth < 1450) && (document.documentElement.clientHeight >= 850)) {
+            // //     $("#pagetwoin").css("margin-top", "220px");
+            // // }
+            // if ((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850)) {
+            //     $(".downpic").css("top", `${parseInt($(".figure img").css("height")) + 120}px`);
+            //     $(".downpic").css("left", "15px");
+            //     // $("#pagetwoin").css("margin-top", "120px");
+            // }
+            // else if (window.innerWidth < 1200) {
+            //     $(".downpic").css("top", `${parseInt($(".figure img").css("height")) + 150}px`);
+            // }
+            // if ((window.innerWidth < 768) && (document.documentElement.clientHeight < 850)) {
+            //     $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
+            //     $("#pagetwoin").css("height", `${pagetwopichei * 4.5}`);
+            // } else if (window.innerWidth < 768) {
+            //     $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
+            //     // $("#pagetwoin").css("margin-top", "150px");
+            // }
+            // if ((window.innerWidth < 577) && (document.documentElement.clientHeight < 850)) {
+            //     // $(".storytitle").css("top", "9%");
+            //     // console.log(document.getElementById("newi_img").src);
+            //     // document.getElementById("newi_img").src = "/img/home/tsat-06.png";
+            //     $(".figure-img").css("margin-bottom", "0px");
+            //     $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
+            //     // $("#pagetwoin").css("margin-top", "170px");
+            // } else if (window.innerWidth < 577) {
+            //     // $(".storytitle").css("top", "8%");
+            //     // console.log(document.getElementById("newi_img").src);
+            //     // document.getElementById("newi_img").src = "/img/home/tsat-06.png";
+            //     $(".figure-img").css("margin-bottom", "0px");
+            //     $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
+            // }
             if (window.innerWidth < 430) {
                 document.getElementById("newi_img").src = "/img/home/tsat-06.png";
             }
@@ -640,15 +723,15 @@
             if (window.innerWidth >= 1200) {
                 $("#pagetwoin").css("height", `${pagetwopichei}px`);
             }
-            if (window.innerWidth >= 1450) {
-                $("#pagetwoin").css("margin-top", "130px");
-            }
-            if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight < 850)) {
-                $("#pagetwoin").css("margin-top", "100px");
-            }
-            if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight >= 850)) {
-                $("#thirdmargin").css("margin", "10px auto");
-            }
+            // if (window.innerWidth >= 1450) {
+            //     $("#pagetwoin").css("margin-top", "130px");
+            // }
+            // if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight < 850)) {
+            //     $("#pagetwoin").css("margin-top", "100px");
+            // }
+            // if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight >= 850)) {
+            //     $("#thirdmargin").css("margin", "10px auto");
+            // }
             var thirdpagetop = parseInt($("#pagetwo").css("height")) + hei + hei;
             $("#pagethree").css("top", `${thirdpagetop}px`);
             var fourpagetop = parseInt($("#pagethree").css("height")) + thirdpagetop;

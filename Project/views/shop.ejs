@@ -4,38 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>function.pop</title>
+    <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
+    <title>f.pop 商品清單</title>
     <!-- Bootstrap setting -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="./assets/css/TonyCss.css">
     <link rel="stylesheet" type="text/css" href="/css/all.css" />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* New Product */
-
+        /* All */
+        /* * {
+            border: 1px red solid;
+        } */
         /* My hr tag */
         .my_hr {
             width: 130px;
             background-color: orange; 
             height: 3px;
         }
-
         .my_product {
             cursor: pointer;
             margin-bottom: 2rem;
         }
-
         .my_product img {
             transition: 0.3s all;
+            width: 100%;
+            opacity: 0;       
         }
-
         .my_product:hover img{
-            opacity: 0.7;
+            opacity: 1;
         }
-
-
+        .my_product .rear_img{
+            opacity: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        .my_product .rear_img:hover{
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
         /* Banner */
         /* 25. Banner */
         #banner {
@@ -52,53 +66,19 @@
             justify-content: center;
             align-items: flex-start;
         }
-
         #banner h1{
             color: #fff;
         }
-
         #banner h4 {
             color: #fff;
         }
-
         #banner button{
             background-color: coral;
         }
-
         #banner button:hover {
             background-color: #1d1d1d;
             color: azure;
         }
-
-
-
-        /* 24. Featured Design */
-        /* .my_product .buy-btn {
-            color: #FFE200;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: 0.3s all;
-            background-color: #395D6C;
-        }
-
-        .my_product:hover .buy-btn {
-            transform: translateY(0px);
-            opacity: 1;
-        }
-
-        .my_product .favo-btn {
-            color: #395D6C;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: 0.3s all;
-            background-color: #FFE200;
-        }
-
-        .my_product:hover .favo-btn {
-            transform: translateY(0px);
-            opacity: 1;
-        } */
-
         .my_button {
             font-size: 0.8rem;
             font-weight: 900;
@@ -112,11 +92,9 @@
             transition: 0.5s ease;
             border-radius: 5px;
         }
-
         .my_button:hover {
             background-color: rgb(255, 247, 0);
         }
-
         .star-progress{
             margin: 0;
             padding: 0;
@@ -135,7 +113,6 @@
             width: 60px; 
             height: 45px;
         }
-
         .star-progress-bar{
             float: left;
             width: 0; 
@@ -149,20 +126,17 @@
             background-image: url("/img/product/star1.jpg");  /* 被點亮的星星圖案*/
             background-repeat: repeat-x; /* 水平重複*/
         }
-
         .star5 {
         box-sizing: border-box;
         width: var(--size, 24px);
         height: var(--size, 24px);
         }
-
         .rating {
         width: 120px;
         height: 24px;
         position: relative;
         background-color: gray;
         }
-
         .rating progress.rating-bg {
         -webkit-appearance: none;
         -moz-appearence: none;
@@ -173,15 +147,12 @@
         width: 100%;
         color: orange;
         }
-
         .rating progress.rating-bg::-webkit-progress-value {
         background-color: rgb(239, 218, 28);
         }
-
         .rating progress.rating-bg::-moz-progress-bar {
         background-color: orange;
         }
-
         .rating svg {
         position: absolute;
         top: 0;
@@ -189,16 +160,13 @@
         width: 100%;
         height: 100%;
         }
-
         #productOuter {
             width: 100%;
             text-align: center;
         }
-
         .productInner {
             display: inline-block;
         }
-
         /* All */
         .all {
             float: left;
@@ -210,11 +178,9 @@
             margin: 2px;
             display: none;
         }
-
             .show {
             display: block;
         }   
-
         .listBtn {
             background-color: white;
             border: 0px solid rgb(206, 200, 200);
@@ -224,128 +190,64 @@
             color: #1d1d1d;
             text-align:left;
         }
-
         .listBtn:hover {
             background-color: white;
             opacity: 1;
             ;
             
         }
-
         .alink {
             text-decoration: none;
             color: #1d1d1d;
             text-align:left;
         }
-
         .alink:link {
             /* text-decoration: none; */
             color: black;
         }
-
-        /* My stick */
-        /* .mystick {
-            display: none;
-            position: fixed;
-            z-index: 999;
-            border: 2px solid yellow;
-            border-radius: 5px;
-            width: 220px;
-            outline: none;
-            background-color: #fff;
-            color: rgb(82, 51, 161);
-            padding: 10px 15px 10px 15px;
-            list-style-type: none;
-            top: 620px;
-        } */
-
         /* Back to Top */
         .back-to-top {
             display: none;
             position: fixed;
-            bottom: 20px;
-            right: 30px;
+            bottom: 300px;
+            right: 60px;
             z-index: 999;
-            border: 2px solid #395D6C;
+            border: 0px ;
             outline: none;
-            background-color: white;
+            /* background-color: white; */
             opacity: 0.7;
-            color: #395D6C;
+            color: #000000;
             cursor: pointer;
-            padding: 10px 15px 15px 15px;
-            border-radius: 10px;
+            /* padding: 10px 15px 15px 15px; */
+            background-color: #ffffff00;
+            /* border-radius: 10px; */
         }
-
-        .back-to-top:hover {
-            background-color: #395D6C;
-            color: white;
+        /* .back-to-top:hover {
+            color: rgb(251, 198, 63);
             border: 2px solid white;
-        }
-
+        } */
     </style>
     <!-- <link rel="stylesheet" href="./assets/css/Nice-breadcrumb.css"> -->
 </head>
 <body>
 
     <!-- Back to Top -->
-    <button class="js-back-to-top back-to-top" title="回到最上側">&#65085;</button>
+    <!-- <button class="js-back-to-top back-to-top" title="回到最上側"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+      </svg>
+    </button> -->
 
     <!-- 0. Navbar -->
     <div class="wrapper">
         <%- include("navbar.ejs") %>
         
-        <!-- 1. Location -->
-        <!-- <section class="mt-2 pt-2">
-            <div class="container my-2 py-2">
-                <span>Home Page</span> | <span><a href="#">男裝</a></span>
-            </div>
-            <div class="container mt-2 pt-2">
-                <p>icon</p>
-            </div>
-        </section> -->
 
-
-        <!-- 2. New Product -->
-        <!-- <section id="new_product" class="mt-2 pt-2 mx-auto w-50">
-            <div class="container mt-2 pt-2 mx-auto">
-                <h3 class="text-center">新品上市</h3>
-                <hr class="my_hr mx-auto">
-                <p class="text-center">本月新品</p>
-            </div>
-            <div class="row mx-auto container">
-                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                    <img class="img-fluid mb-3" src="img/product/FP1_80100001_beige_0.jpg" alt="">
-                    <h5>條紋T-shirt</h5>
-                    <p>$499</p>
-                    <button class="my_button buy-btn">Buy Now</button>
-                </div>
-            
-                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100002_black_0.jpg" alt="">
-                    <h5>條紋T-shirt</h5>
-                    <p>$499</p>
-                    <button class="my_button buy-btn">Buy Now</button>
-                </div>
-            
-                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100003_lightgreen_0.jpg" alt="">
-                    <h5>條紋T-shirt</h5>
-                    <p>$499</p>
-                    <button class="my_button buy-btn">Buy Now</button>
-                </div>
-            
-                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100004_lightblue_0.jpg" alt="">
-                    <h5>條紋T-shirt</h5>
-                    <p>$499</p>
-                    <button class="my_button buy-btn">Buy Now</button>
-                </div>
-            </div>
-        </section> -->
-
-
-        
-
+        <!-- Back to Top -->
+        <button class="js-back-to-top back-to-top" title="回到最上側">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+            </svg>
+        </button>
         <!-- 3. banner -->
 
         <div class="container mt-3 pt-3">
@@ -367,17 +269,6 @@
         </div>
 
         
-
-        <!-- 1. Breadcrumb -->
-        <!-- <section>
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li class="homepage"><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
-                    <li><a href="#"></a></li>
-                </ol>
-            </div>
-        </section> -->
-
         <!-- 4. Left side || Right Side -->
         <section>
             <div class="container mt-2 pt-2">
@@ -408,57 +299,9 @@
                                                     <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E5%B8%BD%E5%AD%90">帽子</button>
                                                 </div>
 
-
-                                                
-
-
-                                                <!-- <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="productType">
-                                                    <label class="form-check-label" for="allProduct_checkbox">All</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="clothes_checkbox"
-                                                        name="productType">
-                                                    <label class="form-check-label" for="clothes_checkbox">Clothes</label>
-                                                </div>
-                                                <div class="form-check" onclick="">
-                                                    <input class="form-check-input" type="checkbox" id="shoes_checkbox"
-                                                        name="productType">
-                                                    <label class="form-check-label" for="shoes_checkbox">pants</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="acessories_checkbox"
-                                                        name="productType">
-                                                    <label class="form-check-label"
-                                                        for="acessories_checkbox">Accessories</label>
-                                                </div> -->
                                             </div>
                                         </div>
-                                        <br><hr>
-                                        <!-- Price -->
-                                        <!-- <div class="row mx-auto container">
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <p>價格</p>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="allPrice_checkbox">
-                                                    <label class="form-check-label" for="allPrice_checkbox">All</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="up1000_checkbox">
-                                                    <label class="form-check-label" for="up1000_checkbox">$1,000 以上</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="from999to500_checkbox">
-                                                    <label class="form-check-label" for="from999to500_checkbox">$500 ~
-                                                        $999</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="down499_checkbox">
-                                                    <label class="form-check-label" for="down499_checkbox">$499 以下</label>
-                                                </div>
-                                            </div>
-                                        </div> -->
+                                        
                                     </form>
                                 </section>
                             </div>
@@ -495,10 +338,7 @@
                                         </select>
                                     </label>
                                 </div>
-                                <!-- <div id="lab">
-                                    <input type="button" value="DESC">
-                                    <input type="button" value="ASC">
-                                </div> -->
+
                             </div>
                         </section>
                         <!-- Shop -->
@@ -518,7 +358,7 @@
                                         </svg>
                                     </button>
                                 </span>
-
+                            </div>
                                 <hr class="mx-auto w-100" style="background-color: gray; height: 2px;">
 
                             <div class="row mx-auto container">
@@ -527,21 +367,16 @@
                                 
                                 <% result.forEach(function(item) { %>
                                 
-
                                 <div class="ChangeCol my_product text-center col-lg-3 col-md-4 col-6 align-items-center justify-content-center">
-                                    
-                                    <!-- <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" src="/img/product/<%= item.product_image %>" alt=""> -->
-                                    <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="loadimg img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" data-src="/img/product/<%= item.product_image %>" alt="">
+                                    <div style="position: relative;">
+                                        <!-- <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" src="/img/product/<%= item.product_image %>" alt=""> -->
+                                        <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="pro_img loadimg img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" data-src="/img/product/<%= item.product_image2 %>" alt="">
+                                        <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="pro_img rear_img loadimg img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" data-src="/img/product/<%= item.product_image %>" alt="">
+                                    </div>
                                     <div>
                                         <svg style="display:none;" class="star5" width="20" height="20">
                                             <defs class="star5 mx-auto d-flex justify-content-center">
                                             <symbol id="fivestars" class="star5 mx-auto d-flex justify-content-center">
-                                                <!-- <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"/>
-                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(24)"/>
-                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(48)"/>
-                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(72)"/>
-                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"  transform="translate(96)"/> -->
-
                                                 <path class="star5" d="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218 M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"/>
                                                 <path class="star5" d="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218 M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(24)"/>
                                                 <path class="star5" d="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218 M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(48)"/>
@@ -559,49 +394,71 @@
                                     <br>
                                     <h5 style="font-size: 15px;"><%= item.product_name %></h5>
                                     
-
                                         <p>$ <%= item.product_price %></p> 
-
-                                    <!-- <% if(item.product_special_offer){ %>
-
-                                        <span>$<strong style="color: red;"> <%= item.product_special_offer %></strong></span>
-                                        <span style="text-decoration: line-through;">$<strong><%= item.product_price %></strong> </span>
-
-                                    <% }else{ %>
-                                        <p>$<strong><%= item.product_price %></strong> </p>
-
-                                    <% } %> -->
-                                    
-
-
-                                    
                                     <% var disabled = " "; %>
                                     <% if(memberprofile != null){ %>
                                             <% var memid = memberprofile.id; %>
                                             <% var red="currentColor" ; var Hpath="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z";%>
                                             <% for(let j=0; j < favorArr.length; j++) { %>
+                                                <input type="hidden" name="favorArr" value="<%-favorArr.length %>">
                                             <% if(favorArr[j]==item.product_id){ red="red";%>
                                             <% Hpath="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" ; break;}else{ %>
                                             <% red="currentColor";%>
                                             <% Hpath="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z";%>
                                             <% }}%>
                                     <% }else{ red = "currentColor";Hpath="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"; disabled = "disabled";memid = "nomem";}%>
-                                            
+                                            <input type="hidden" name="HeartColor" id="" value="">
                                     
                                     <div id="productOuter" class="row justify-content-around">
                                         <div class="col-6">
-                                            <form method="post" action="/home/product/like" id="form<%=item.product_id%>" name="form<%=item.product_id%>">
+                                            <div  id="form<%=item.product_id%>" name="form<%=item.product_id%>">
                                                 <input type="hidden" name="content" value="<%-item.product_id %>" />
                                                 <input type="hidden" name="memid" value="<%-memid %>" />
-                                                <button type="submit" id="aa" onclick="formSubmit(this)" class="pIconbtn" <%= disabled%> >
+                                                <button type="" id="aa_<%-item.product_id%>" onclick="clickHeart(`<%-item.product_id%>`)" class="pIconbtn " <%= disabled%> >
                                                 <!-- <button type="submit" id="aa"   > -->
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="<%-red %>"
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg_<%-item.product_id%>"  width="24" height="24" fill="<%-red %>"
                                                         viewBox="0 0 16 16">
-                                                        <path d="<%= Hpath %>" />
+                                                        <path class="path_<%-item.product_id%> " d="<%= Hpath %>" />
                                                     </svg>
                                                 </button>
-                                            </form>
+                                            </div>
                                         </div>
+                                        <script>
+                                            function clickHeart(product_id){
+                                                var c_id = $('input[name="memid"]').val();  // customer_id
+                                                var heart_fill = $(`.svg_${product_id}`).attr('fill');
+                                                var heart_path = $(`.path_${product_id}`).attr('d');
+                                                var H_path="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                                                var H_path_fill='M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z';
+                                                    if (heart_fill == 'red'){
+                                                        // console.log('更換為空心')
+                                                        $(`.svg_${product_id}`).attr('fill','currentColor');
+                                                        $(`.path_${product_id}`).attr('d',H_path); 
+                                                     } else {
+                                                        // console.log('更換為實紅心')
+                                                        $(`.svg_${product_id}`).attr('fill','red');
+                                                        $(`.path_${product_id}`).attr('d',H_path_fill); 
+                                                    }
+                                               
+                                                var data = { 
+                                                    product_id:product_id,
+                                                    c_id:c_id
+                                                    };
+                                                $.ajax({
+                                                    url:"/home/product/like",
+                                                    type:"POST",
+                                                    dataType:'json',
+                                                    data:data,
+                                                    success:function(data){
+                                                        // console.log('into database success');
+                                                        // console.log(data);
+                                                    },
+                                                    error:function(){
+                                                        // console.log('NNNNNNNNNNNNNNNNN');
+                                                    },
+                                                })
+                                             }
+                                        </script>
                                         <div onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="col-6" >
                                             <button class="pIconbtn">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
@@ -610,9 +467,7 @@
                                             </button>
                                         </div>
                                     </div>
-
                                 </div>
-
                                 <% }); %>
 
                                 
@@ -635,40 +490,6 @@
                 </div>
             </div>
 
-            <!-- <p>Click the button to sort the list alphabetically:</p>
-            <button onclick="sortList()">Sort</button>
-            <span id="filterQ">
-
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>School</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        
-                        <tbody>
-                        
-                                <tr>
-                                    <% result.forEach(function(item){ %>
-                                    <td><%= item.product_price %></td>
-                                    <td><%= item.product_name %></td>
-                                    <% }) %>
-                                </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
-                
-
-            </span> -->
 
         </section>
         <div class="push"></div>
@@ -684,52 +505,34 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <!-- <script src="./assets/js/jquery.min.js"></script> -->
-    <!-- <script src="./assets/js/myJs.js"></script> -->
-    <!-- <script src="js/product/myJs.js"></script> -->
-    <!-- <script src="js/product/jquery.min.js"></script> -->
+
 
     <script>
         
-
-            console.log(document.getElementById('filterQ'));
+        //     console.log(document.getElementById('filterQ'));
         
-
-        let select = document.querySelector("#selectMode");
-        select.addEventListener("change", selectFun);
-
-        function selectFun() {
-            const switchValue = this.value;
-
-            switch (switchValue) {
-            case "1":
-                option_01();
-                break;
-            case "2":
-                option_02();
-                break;
-            case "3":
-                option_03();
-                break;
-            case "4":
-                option_04();
-                break;
-            default:
-                return;
-            }
-        }
-
-        // Price High To Low
-        // function option_01() {
-        //     var item = "<% result.forEach(function(item) { %>  <% }); %>
-        //     item.sort(function(a,b) {
-        //         return a.product_price > b.product_price;
-        //     })
-        //     alert(item);
-        //     var allproduct = [];
-        //     // document.getElementById('filterQ') forEach(x => {allproduct.push(allproduct.product_price);
-        //     console.log(allproduct)});
+        // let select = document.querySelector("#selectMode");
+        // select.addEventListener("change", selectFun);
+        // function selectFun() {
+        //     const switchValue = this.value;
+        //     switch (switchValue) {
+        //     case "1":
+        //         option_01();
+        //         break;
+        //     case "2":
+        //         option_02();
+        //         break;
+        //     case "3":
+        //         option_03();
+        //         break;
+        //     case "4":
+        //         option_04();
+        //         break;
+        //     default:
+        //         return;
+        //     }
         // }
+ 
         
         // Price Low to High
         function option_02() {
@@ -739,12 +542,11 @@
             allproduct.push(parseInt(cost));
             // console.log($(ele).find("p").text());
         });
-        // console.log(allproduct);
-
+        // console.log(allproduct);a
             var lowHigh = allproduct.sort(function (a, b) {
                 return a-b;
             });
-            console.log(lowHigh);
+            // console.log(lowHigh);
         }
         
         function option_03() {
@@ -757,59 +559,6 @@
         }
     </script>
 
-    <!-- Filter ALL -->
-    <!-- <script>
-        filterSelection("all")
-        function filterSelection(c) {
-        var x, i;
-        x = document.getElementsByClassName("productAll");
-        if (c == "all") c = "";
-        for (i = 0; i < x.length; i++) {
-            w3RemoveClass(x[i], "show");
-            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-        }
-        }
-
-        function w3AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-  }
-}
-
-function w3RemoveClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);     
-    }
-  }
-  element.className = arr1.join(" ");
-} -->
-
-
-<!-- var btnContainer = document.getElementById("categoryButton");
-var btns = btnContainer.getElementsByClassName("categorybtn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-} -->
-    <!-- </script> -->
-
-    <!-- Change Column of Number (X) Can't Use this way because DOM-->
-    <!-- <script>
-        function function4col(){
-            document.getElementById("ChangeCol").classList.add("col-lg-3");
-            document.getElementById("ChangeCol").classList.remove("col-lg-4");
-        }
-    </script> -->
 
     <script>
         $(document).ready(function(){
@@ -820,7 +569,7 @@ for (var i = 0; i < btns.length; i++) {
                     // console.log(this.classList);
                     $(ele).addClass("col-lg-4 col-12");
                     $(ele).removeClass("col-lg-3 col-6");
-                    console.log(ele);
+                    // console.log(ele);
                 })
             });
             $("#become4Col").click(function(){
@@ -830,12 +579,11 @@ for (var i = 0; i < btns.length; i++) {
                     // console.log(this.classList);
                     $(ele).addClass("col-lg-3 col-6");
                     $(ele).removeClass("col-lg-4 col-12");
-                    console.log(ele);
+                    // console.log(ele);
                 })
             });
         });
-
-        console.log($('.genderCategory span').html());
+        // console.log($('.genderCategory span').html());
         if($('.genderCategory span').html() == "Female"){
         $("#categoryButton").html(`
                                                      <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>">顯示全部</button>
@@ -844,9 +592,7 @@ for (var i = 0; i < btns.length; i++) {
                                                     <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E6%B4%8B%E8%A3%9D">洋裝</button>
                                                     <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E8%A3%99%E5%AD%90">裙子</button>
                                                     <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E5%B8%BD%E5%AD%90">帽子</button>
-
         `);
-
         }else{
             $("#categoryButton").html(`
                                                      <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>">顯示全部</button>
@@ -854,9 +600,7 @@ for (var i = 0; i < btns.length; i++) {
                                                     <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E4%B8%8B%E8%91%97">下著</button>
                                                     <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E5%8C%85">包</button>
                                                     <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E9%9E%8B">鞋</button>
-
         `);
-
         }
     </script>
 
@@ -921,7 +665,7 @@ for (var i = 0; i < btns.length; i++) {
         </script>
         <script>
             $("#lab input").click(function(){
-                console.log(this);
+                // console.log(this);
                 var sel= {};
                  sel.sel =$(this).val();
                 
@@ -932,7 +676,6 @@ for (var i = 0; i < btns.length; i++) {
                     data:sel,
                     
                 })
-
             })
         </script>
 
@@ -946,40 +689,5 @@ for (var i = 0; i < btns.length; i++) {
 
 
 </body>
-
-<!-- <script>
-    function formSubmit(obj) {
-      // console.log(this.children[0].getAttribute("d"));
-      // console.log((this.parentNode).children[0].getAttribute("id"))
-      console.log(obj.parentNode.id)
-      
-      var thisform = obj.parentNode.id;
-      console.log(document.getElementById(`${thisform}`));
-  
-      if (obj.getAttribute("fill") == "red") {
-        obj.children[0].setAttribute("d", "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z")
-        obj.setAttribute("fill", "currentColor");
-        document.getElementById(`${thisform}`).submit();
-        // console.log("yes");
-      } else {
-        obj.children[0].setAttribute("d", "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z");
-        obj.setAttribute("fill", "red");
-        document.getElementById(`${thisform}`).submit();
-        // console.log("no");
-      }
-  
-    };
-  
-    function clearAll(){
-      document.getElementById('clearFavor').submit();
-    } -->
-<!-- 
- 
-
-  </script> -->
-
-  
-  <!-- genderCategory -->
-  
 
 </html>

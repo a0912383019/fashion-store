@@ -36,14 +36,14 @@ router.get('/item_del/detail/:id([0-9]+)', function (rqs, res) {
 })
 router.get('/item_del', function (req, res) {
   var message = '';
-  var sql = "SELECT * FROM `products` where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(`product_upload`);";
+  var sql = "SELECT * FROM `products` where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(`product_upload`);SELECT * FROM `products` where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(`product_upload`) LIMIT 5;";
   db.exec(sql, function (err, result) {
     if (result.length <= 0)
       message = "Profile not found!";
     res.render('admin_item_del', {
-
       message: message,
-      data2: result,
+      data2: result[0],
+      data3: result[1],
     });
   });
 
@@ -125,19 +125,29 @@ router.get('/item_all', function (rqs, res) {
   SELECT COUNT(*) AS COUNT FROM products;
   SELECT * FROM products ORDER BY products.product_upload DESC;
   SELECT * FROM products order by product_id DESC limit 1;
-  SELECT order_items.product_id,SUM(order_items.Quantity), products_all.product_name, products_all.product_image, products_all.product_image2, products_all.product_image3
+  SELECT order_items.product_id,SUM(order_items.Quantity), products_all.product_name, products_all.product_image, products_all.product_image2, products_all.product_image3, products_all.product_gender
   FROM order_items
   LEFT JOIN products_all
   ON order_items.product_id = products_all.product_all_id
+  WHERE products_all.product_gender = 'Female'
   GROUP BY products_all.product_name
   ORDER BY SUM(order_items.Quantity) DESC
-  LIMIT 3;`;
+  LIMIT 3;
+  SELECT order_items.product_id,SUM(order_items.Quantity), products_all.product_name, products_all.product_category, products_all.product_image, products_all.product_image2, products_all.product_image3, products_all.product_gender
+  FROM order_items
+  LEFT JOIN products_all
+  ON order_items.product_id = products_all.product_all_id
+  WHERE products_all.product_gender = 'Male'
+  GROUP BY products_all.product_name
+  ORDER BY SUM(order_items.Quantity) DESC
+  LIMIT 3`;
   db.exec(sql, [], function (results, fields) {
     res.render('admin_item_all', {
       total: results[0][0].COUNT,
       data2: results[1],
       pall_id: results[2][0],
-      data3: results[3]
+      data3: results[3],
+      data4: results[4]
     })
   })
 })

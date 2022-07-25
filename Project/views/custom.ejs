@@ -5,17 +5,19 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
+  <title>f.pop 客製化設計</title>
   <link rel="stylesheet" type="text/css" href="/css/all.css" />
   <!-- <script src="/js/index/bootstrap.min.js"></script> -->
   <script src="/js/home/jquery.min.js"></script>
   <script src="/js/home/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-  crossorigin="anonymous"></script>
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
   <script src="/js/index/html2canvas_min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
 
 
   <style>
@@ -44,33 +46,65 @@
 
     .uploadA,
     .uploadB {
+      margin: 0 1px;
       border: #363B36 solid 1px;
-      width: 50%;
+      border-radius: 10px;
+      background-color: #e4e4e4;
+      width: 49%;
       height: 100%;
       float: left;
       overflow: hidden;
+    }
+
+    .button {
+      /* text-decoration: none; */
+      /* text-transform: uppercase; */
+      color: rgb(0, 0, 0);
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.8s;
+    }
+
+    .button:hover {
+      background-color: #ffffff;
+    }
+
+    .button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -50px;
+      width: 0;
+      height: 100%;
+      background-color: #FFE200;
+      transform: skewX(60deg);
+      z-index: -1;
+      transition: width 0.8s;
+    }
+
+    .button:hover::before {
+      width: 185%;
     }
   </style>
 </head>
 
 <body>
-  <%- include("navbar.ejs") %>
 
-    <div>
+  <div>
+    <%- include("navbar.ejs") %>
       <% var memid=0; %>
         <% if(memberprofile !=null){ %>
           <% console.log(memberprofile.id);memid=memberprofile.id; }%>
 
             <!-- 小連結 -->
-            <div style="position:relative; width: 50%; top: 180px; left: 16.875%;">
-              <a href="" style="left: 16.875%;"> <b>首頁</b> </a>|
-              <b>我的設計</b>
-            </div>
 
             <!-- 客製化T  -->
-            <div
-              style="position:relative; top: 250px;margin: 0 auto; border-bottom: 1px black solid; min-height: 700px;"
+            <div class="container" style="position:relative;margin: 50px auto; border-bottom: 1px black solid;"
               id="customdiv">
+              <div>
+                <a href=""><b>首頁</b></a>|
+                <b>我的設計</b>
+              </div>
               <h4 style="text-align: center; margin-bottom: 40px;"> <b>客製化T恤</b> </h4>
               <span style="font-size: 15px;">STEP</span><b style="font-size: 18px;">1. 選擇顏色</b>
 
@@ -104,8 +138,8 @@
               </div>
 
               <!-- 中間衣服畫板 -->
-              <div id="capture" class="row middleboard"
-                style="border: black solid 1px; height: 533px; margin-top: 60px;">
+              <div id="capture" class="row middleboard" style="border: black solid 1px; height: 533px; margin-top: 60px; width: 1116px;
+                margin-left: -3px;">
 
                 <div class="col-6 move_place" id="target-container" ondragover="over(event)" ondrop="drop(event)"
                   style="position: absolute; text-align: center; padding: 0;left: 0;">
@@ -130,7 +164,8 @@
                 <div class="col-6" style="text-align: center">
                   <span style="font-size: 15px">STEP</span><b style="font-size: 18px">2. 上傳圖片</b>
                   <br /><br /><br /><br />
-                  <input id="myFile" type="file" style="border: black solid 1px; width: 33%; font-size: 15px" />
+                  <input class="btn font-width-blod border border-secondary px-1 py-1" id="myFile" type="file"
+                    style="border: black solid 1px; width: 38%; font-size: 15px" />
                 </div>
 
                 <div class="col-6" style="text-align: center">
@@ -138,7 +173,6 @@
                   <div style="
                 width: 320px;
                 height: 180px;
-                background-color: #d4d4d4;
                 margin: 20px auto;
                 border-radius: 10px;
               ">
@@ -153,14 +187,16 @@
                   <span style="font-size: 15px">STEP</span><b style="font-size: 18px">4. 儲存&上傳檔案</b>
                   <br /><br /><br /><br />
                   <a href="#">
-                    <button onclick="divtoimg()" style="background-color: white; border-radius: 5px">
+                    <button class="button btn font-width-blod border border-secondary px-3 py-1" onclick="divtoimg()"
+                      style="border-radius: 5px">
                       儲存設計
                     </button>
 
                   </a>
                   <br><br><br>
                   <p>請上傳65kb以下的檔案</p>
-                  <input type="file" id="uploadfinal" style="margin-left: 100px;">
+                  <input class="btn font-width-blod border border-secondary px-1 py-1" type="file" id="uploadfinal"
+                    style=" width: 40%;">
                   <div id="seefinal" style=" width: 100px;height: 70px;margin: 20px auto;"></div>
                   <br>
                 </div>
@@ -207,7 +243,8 @@
                       <td></td>
                       <td></td>
                       <td style="margin-top: 20px">
-                        <button id="addprod" style="background-color: white; border-radius: 5px">
+                        <button class="button btn font-width-blod border border-secondary px-1 py-1" id="addprod"
+                          style="border-radius: 5px">
                           加入購物車
                         </button>
                       </td>
@@ -243,10 +280,10 @@
               <br />
               <img src="/img/index/product_more.png" alt="" style="width: 550px" />
             </div>
-    </div>
+  </div>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <%- include("footer.ejs") %>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <%- include("footer.ejs") %>
 
 
 
@@ -258,7 +295,7 @@
   console.log(document.documentElement.clientWidth);
   $(document).ready(function () {
     var wid = document.documentElement.clientWidth;
-    $("#customdiv").css("width", `${wid*0.7}px`);
+    $("#customdiv").css("width", `${wid * 0.7}px`);
   })
 
   var color_choose = function () {
@@ -601,7 +638,7 @@
   }
 </script>
 <script>
-  
+
   $("#addprod").click(function () {
 
     // console.log(document.getElementById("Snum").value);
@@ -643,13 +680,13 @@
         if (i == 0) {
           var cart = {
             code: '',
-            all_id: '212',
+            all_id: '500',
             id: '55',
             name: '客製化T恤',
             image: '1',
             size: sizee,
             color: '',
-            price:  450,
+            price: 450,
             quantity: arr[i]
 
           };
@@ -657,8 +694,8 @@
         if (i == 1) {
           var cart = {
             code: '',
-            all_id: '213',
-            id: '56',
+            all_id: '501',
+            id: '55',
             name: '客製化T恤',
             image: '1',
             size: sizee,
@@ -671,8 +708,8 @@
         if (i == 2) {
           var cart = {
             code: '',
-            all_id: '214',
-            id: '57',
+            all_id: '502',
+            id: '55',
             name: '客製化T恤',
             image: '1',
             size: sizee,
@@ -682,7 +719,7 @@
 
           };
         }
-   
+
 
         $.ajax({
           url: "http://localhost:3000/home/shop_cart",
@@ -697,28 +734,28 @@
 
 
             var dot = document.createElement("div");
-              $(dot).prop("class","dotGreen");
-              $(dot).css({
-                "background": "#96ff6c",
-                "width": "8px",
-                "height": "8px",
-                "border-radius": "50%",
-                "color": "#fff",
-                "position": "absolute",
-                "left": "88%",
-                "top": "-3px",
-                "transition":".3s",
-              })
-              document.getElementById("fpopnav_cart").appendChild(dot);
-          
-
-              var pidItem =document.createElement("div");
-              $(pidItem).prop("class","d-flex mb-2 smItem");
-              $(pidItem).css("padding","0 30px");
-              
+            $(dot).prop("class", "dotGreen");
+            $(dot).css({
+              "background": "#96ff6c",
+              "width": "8px",
+              "height": "8px",
+              "border-radius": "50%",
+              "color": "#fff",
+              "position": "absolute",
+              "left": "88%",
+              "top": "-3px",
+              "transition": ".3s",
+            })
+            document.getElementById("fpopnav_cart").appendChild(dot);
 
 
-              pidItem.innerHTML =` 
+            var pidItem = document.createElement("div");
+            $(pidItem).prop("class", "d-flex mb-2 smItem");
+            $(pidItem).css("padding", "0 30px");
+
+
+
+            pidItem.innerHTML = ` 
                       <div style="
                           margin-right: 20px;
                           max-width: 37px;
@@ -739,7 +776,7 @@
                       </div>
 
               `;
-              $("#shopCartItttttem").append(pidItem);
+            $("#shopCartItttttem").append(pidItem);
           },
           err: function () {
             console.log("錯誤");
@@ -752,36 +789,36 @@
   });
 </script>
 <script>
-       function arrayBufferToBase64(buffer){
-          var binary="";
-          var bytes = new Uint8Array(buffer);
-          var len = bytes.byteLength;
-          for(var i =0;i < len;i++ ){
-            binary += String.fromCharCode(bytes[i]);
-          };
-          console.log(bytes);
-          return window.btoa(binary);
-        };
+  function arrayBufferToBase64(buffer) {
+    var binary = "";
+    var bytes = new Uint8Array(buffer);
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    };
+    console.log(bytes);
+    return window.btoa(binary);
+  };
 
 
 
-    uploadfinal.onchange = function () {
-      const readeri = new FileReader();
-      readeri.readAsDataURL(uploadfinal.files[0]);
-      // console.log(myFile.files);
-      readeri.onload = function () {
+  uploadfinal.onchange = function () {
+    const readeri = new FileReader();
+    readeri.readAsDataURL(uploadfinal.files[0]);
+    // console.log(myFile.files);
+    readeri.onload = function () {
 
-        const seeup = new Image(); // document.createElement('img'); // <img>
-        seeup.src = readeri.result; // <img src='data....'>
-        seeup.style.zIndex = 1000;
-        seeup.style.margin = '5px 0';
-        seeup.onload = function () {
-          // 　　a. 透過 <img>
-          seeup.style.width = '100px';
-          document.getElementById('seefinal').append(seeup);
-        }
+      const seeup = new Image(); // document.createElement('img'); // <img>
+      seeup.src = readeri.result; // <img src='data....'>
+      seeup.style.zIndex = 1000;
+      seeup.style.margin = '5px 0';
+      seeup.onload = function () {
+        // 　　a. 透過 <img>
+        seeup.style.width = '100px';
+        document.getElementById('seefinal').append(seeup);
       }
     }
+  }
 
 
 
@@ -801,7 +838,7 @@
       },
     }).then((response) => {
       // console.log(response.data);
-      cartPic =arrayBufferToBase64(response.data.img.buffer.data);
+      cartPic = arrayBufferToBase64(response.data.img.buffer.data);
     });
   }
   file.addEventListener('change', uploadImg);
