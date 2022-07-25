@@ -22,11 +22,11 @@ RWD會根據視窗大小自動適應。旋轉木馬幻燈片是套用 jQuery之�
 
 ### 技術點
 。JS滾輪事件一次滑動一半頁面  
-。HTML5 ondragstart事件連續複製兩張不同圖片  
+。HTML5 ondragstart事件連續複製不同的圖片  
 。利用 html2canvas 把div轉成canvas變成圖片儲存到電腦  
 。FileReader上傳圖片後預覽  
 。圖片轉成二進制儲存成blob在mysql中  
 。Axios 與 Ajax 傳送資料  
-。node.js 應用 multipleStatements: true 讓程式碼更簡潔好讀  
+。node.js 應用 multipleStatements: tru
 
 
